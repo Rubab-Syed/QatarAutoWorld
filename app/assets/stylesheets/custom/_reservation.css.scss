@@ -1,0 +1,75 @@
+.reservation-table td {
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+/* Check in/out field in Room show*/
+.space {
+  margin-bottom: 15px;
+  padding-right: 0;
+  padding-left: 10px;
+}
+
+.space-1 {
+  padding-left: 0;
+  padding-right: 10px;
+}
+
+.price_tag {
+  margin-top: -18px;
+  border-radius: 25px;
+  border: 2px solid #bfbfbf;
+  width: 100%;
+  height: 70px;
+  background-color: #eeeeee;
+  font-size: 16px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.price_tag .reservation-price {
+  padding-left: 20px;
+  margin-top: 100px;
+  font-weight: bold;
+}
+
+.price_tag .reservation-type-select {
+  height: 90%;
+  width: 50%;
+  margin-top: 3.5px;
+  margin-left: 18px;
+  padding-top: 2px;
+}
+
+#message {
+  font-size: 15px;
+  color: #e00007;
+}
+.reservations.received_reservations .user-name-bold{
+  margin-top: 10px;		
+  display: block;
+}
+
+.center {
+  margin-top:50px;
+}
+
+#booking_details_modal .modal-header {
+  padding-bottom: 5px;
+}
+
+#booking_details_modal .modal-footer {
+  padding: 0;
+}
+
+#booking_details_modal .modal-footer .btn-group button {
+  height:40px;
+  border-top-left-radius : 0;
+  border-top-right-radius : 0;
+  border: none;
+  border-right: 1px solid #ddd;
+}
+
+#booking_details_modal .modal-footer .btn-group:last-child > button {
+  border-right: 0;
+}

@@ -1,0 +1,5 @@
+<% if @success %>
+  $('#booking_details_modal').modal('show');
+<% else %>
+  $(window.location.replace("/login"))
+<% end %>

@@ -1,0 +1,2 @@
+class PotentialUser < ApplicationRecord
+end

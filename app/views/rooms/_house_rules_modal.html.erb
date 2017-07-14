@@ -1,0 +1,32 @@
+<div class="modal fade" id="house_rules_modal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title">House Rules</h2>
+        <button type="button" class="close hidden" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body text-left">
+        <h4>Default Rules:</h4>
+        <% @default_rules_rooms.each do |rule| %>
+          <p>
+            <%= rule.default_rule.title + ": " %>
+            <span><%= rule.answer == true ? "Yes" : "No" %></span>
+          </p>
+        <% end %>
+        <h4>Some Additional Rooms:</h4>
+        <p class="text-center"><%= @aditional_rules.size == 0 ? "No additional rule is created by landlord" : "" %></p>
+        <% @aditional_rules.each do |rule| %>
+          <p>
+            <%= rule.title %>
+          </p>
+        <% end %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary hidden">Save changes</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

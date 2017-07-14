@@ -1,0 +1,68 @@
+<% provide(:title, 'Sign Up') %>
+<div id="fb-root"></div>
+<div class="space-maker">
+  <div class="container col-md-offset-1">
+    <div class="signup_login col-md-4 col-md-offset-1">
+      <h3 align="center"> Sign Up </h3>
+      <div class="signup-or-seperator">
+        <span class="h6 signup-or-seperator--text"></span>  
+      </div>
+      <%= link_to user_facebook_omniauth_authorize_path do %>
+      	<button id="loginBtnfb" scope="public_profile,email" class="loginBtn loginBtn--facebook">
+      	  Sign Up with Facebook
+      	</button>
+      <% end %>
+
+    	<button id="loginBtnG" class="loginBtn loginBtn--google">
+    	  Sign Up with Google
+    	</button>
+      <div class="form-footer loginLink">
+        Already a Qayaam member? &nbsp;
+        <%= link_to "Log in", new_user_session_path, :style =>"color: #ff5a5f" %>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="panel-body">        
+        <%= form_for resource, as: resource_name, url: registration_path(resource_name), :html => { class: 'validate_form' } do |f| %>
+          <%= render 'shared/devisemes' %>
+  
+          <div class="form-group-signup">
+            <label>Full Name<span class="asterisk">*</span></label>
+            <%= f.text_field :fullname, autofocus: true, :class => "form-control validate[required]", :id => "name", :placeholder => "Full Name" %>
+          </div>
+    
+          <div class="form-group-signup">
+            <label>Phone Number (03xx-xxxxxxx)<span class="asterisk">*</span></label>
+            <%= f.text_field :phone_number, :class => "form-control phone_number_field validate[required]", :placeholder => "Phone Number (03xx-xxxxxxx)" %>
+          </div>
+          
+          <div class="form-group-signup">
+            <label>CNIC (xxxxx-xxxxxxx-x)<span class="asterisk">*</span></label>
+            <%= f.text_field :cnic, :placeholder => "CNIC (xxxxx-xxxxxxx-x)", :class => "form-control cnic_field validate[required] mb10" %>
+          </div>
+
+          <div class="form-group-signup">
+            <label>Email<span class="asterisk">*</span></label>
+            <%= f.email_field :email, autofocus: true, :class => "form-control validate[required]", :id => "email", :placeholder => "Email" %>
+          </div>
+    
+          <div class="form-group-signup">
+            <label>Password<span class="asterisk">*</span></label>
+            <%= f.password_field :password, autocomplete: "off", :class => "form-control validate[required]", :placeholder => "Password" %>
+          </div>
+	  
+          <div class="actions">
+            <%= f.submit "Sign up", :class => "btn btn-primary" %>
+          </div>
+          
+          <hr>
+          <div class="form-footer">
+	    
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>    
+
+<script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>  

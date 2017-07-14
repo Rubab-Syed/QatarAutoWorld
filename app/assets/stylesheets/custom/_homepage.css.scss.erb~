@@ -1,0 +1,761 @@
+.banner {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url('qayaam2.jpg');
+  text-align: left;
+  background-color: white;
+  background-size: cover;
+  background-attachment: scroll;
+  background-repeat: no-repeat;
+  position: absolute;
+  background-position: center;
+  height: 650px;
+  left: 0;
+  right: 0;
+  padding-top: 0px;
+  opacity: 0.9;
+}
+
+.banner h1 {
+  font-size: 65px;
+  line-height: 66px;
+  color: white;
+  margin-top: 80px;
+  font-family: 'Montserrat', sans-serif;
+  opacity: 1;
+}
+
+.banner p {
+  font-size: 25px;
+  line-height: 25px;
+  color: white;
+  margin-bottom: 45px;
+  font-family: 'Montserrat', sans-serif;
+}
+ 
+.wrapper {
+  padding-bottom: 50px;
+}
+
+/* Home Search Bar */
+.search_desk {
+  margin-left: 150px;	
+  height: 100px;
+}
+
+#go_place {
+  width: 100%;
+  height: 40px;
+}
+
+.in_out_date {
+  margin-bottom: 5px;
+}
+
+go_place_border {
+  margin-right: 0;
+}
+
+/* Google maps */
+
+#sidebar {
+  float: right;
+  width: 300px;
+}
+
+#sidebar #widget {
+  width: 250px;
+  height: 400px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #ccc;
+  margin-left: 45px;
+}
+
+/* Discovery */
+
+.discovery {
+  background-size: cover;
+  background-position: center;
+  height: 326px;
+  margin-bottom: 10px;
+}
+
+.home_container {
+  width: 95%;
+}
+
+.va-container {
+  display: table;
+  width: 100%;
+  height: 100%;
+  font-weight: bold;
+}
+
+.va-middle {
+  color: #fff;
+  vertical-align: middle;
+  display: table-cell;
+}
+
+.weekend_font h3 {
+  font-size: 32px;
+  line-height: 35px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.weekend_font p {
+  font-size: 16px;
+  line-height: 23px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+@media screen  and (max-width: 569px){
+  .slogan h1 {
+    font-size: 40px;
+  }
+}
+
+.slogan {
+  background-color: rgba(0, 175, 236, 0.06);
+  margin-left:20px;
+  width: 90%;
+}
+
+.slogan h1 {
+  color: #00afec;
+  //color: rgb(61, 62, 61);
+  font-size: 45px;
+  font-family: ‘Trebuchet MS’, Helvetica, sans-serif;	
+  text-transform: initial;	
+}
+
+.slogan p {
+  color: rgba(0, 0, 1, 0.7);
+  //color: rgb(61, 62, 61);
+  font-size: 45px;
+  font-family: ‘Trebuchet MS’, Helvetica, sans-serif;	
+  text-transform: initial;
+  letter-spacing: -3px;		
+}
+
+.slogan p span{
+  color: rgba(0, 0, 1, 0.7);  
+  font-family: ‘Trebuchet MS’, Helvetica, sans-serif;	
+}
+
+.slogan .urdu {
+  color: #00afec;
+  //color: #216663;
+  font-size: 55px;
+  letter-spacing: -1px;		
+  font-weight: bold;
+}
+
+.slogan .blue-color {
+  color: #00afec;
+}
+
+.qayaam-mezbaan {
+  color: rgba(0, 0, 1, 0.7);
+}
+
+.home-tabs {
+  margin-top:50px;
+}
+
+.home-tabs .tabs {
+  font-family: ‘Trebuchet MS’, Helvetica, sans-serif;
+  font-size: 13px;
+  font-weight: bold;
+  color: #216663;	
+}
+
+.home-tabs a {
+  color: #216663;	
+}
+
+@media screen  and (max-width: 965px){
+  .banner h1 {
+    font-size: 40px;
+  }
+  .search_desk {
+    width: 50%;
+    margin: 50px auto;
+  }
+  .home-tabs { 
+    margin-top: 80px;
+  }
+  .slogan .second-line {
+    padding-left: 0px;
+  }
+}
+
+@media screen  and (max-width: 965px){
+  .banner h1 {
+    font-size: 40px;
+  }
+  .search_desk {
+    width: 50%;
+    margin: 50px auto;
+  }
+  .home-tabs { 
+    margin-top: 80px;
+  }
+}
+
+.become_qayaam_meezban {
+  font-size: 20px;
+  font-family: "Helvetica";
+  color: rgb(0, 175, 236);
+  font-weight: bold;
+}
+
+// @media screen  and (max-width: 950px){
+// 	.banner h1 {
+// 		font-size: 40px;
+// 	}
+// 	.search_desk {
+// 		width: 50%;
+// 		margin: 50px auto;
+// 	}
+// }
+
+@media screen and (max-width: 550px) {
+  .search_desk {
+    margin-top: 40px;
+    width: 80%;
+  }
+  .banner h1 {
+    font-size: 40px;
+  }
+  .banner p {
+    font-size: 18px;
+    line-height: 20px;
+  }
+}
+
+.img-home {
+  height: 250px !important;
+  width: 400px;
+}
+
+.img-home img{
+  object-fit: cover;
+}
+
+.widget h2 {
+  cursor:pointer;  
+  font-size:22px;
+  font-weight:bold;
+  padding-bottom:2px;
+}
+
+.widget p {
+ font-size: 16px;
+}
+  
+@media only screen and (max-width: 479px) {    
+  .widget_content{
+    display:none;
+  }
+  .active .widget_content{
+    display:inline;	
+  }
+  .widget h2 { 
+    border-bottom:1px solid #ddd;
+  }   
+  .widget h2:after {
+    content:"\203A";
+    color:white;
+    width:20px;
+    height:20px;
+    background:#999;
+    display:inline-block;
+    text-align:center;
+    float:right;
+  }
+  .active.widget h2:after {
+    content:"\2039";    
+    background:#ccc;
+  }
+}
+
+//for uniform font-family
+
+.home-headings {
+  font-family: 'Arial', 'Helvetica', 'sans-serif';
+  font-size: 1.2em;
+  padding-bottom: 15px;
+}
+
+.row-space-home {
+  padding-top: 20px;
+}
+
+.panel-body-height {
+  height: 30px;
+}
+
+.col-space-panel {
+  padding-left: 0px;
+}
+
+.location-select .select2-selection.select2-selection--single{
+  padding-top: 5px;
+}
+
+.location-select .select2-selection__arrow{
+  padding-top: 35px;
+}
+
+.colorless-readonly .form-control[readonly]{
+  background-color: #ffffff;
+}
+
+.select2-container--bootstrap .select2-selection--single{
+  line-height: 2.428571 !important;
+}
+
+.header-image{
+  background-image: url(asset-path('header_image.png'))
+}
+
+.pages.home{
+  .carousel {
+    height: 500px;
+    margin-bottom: 60px;
+  }
+  .carousel .item {
+    height: 500px;
+    background-color: #777;
+  }
+  .carousel-inner > .item > img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    height: 500px;
+  }
+  .search {
+    margin-top: -25%;
+    margin-bottom: 15%;
+  }
+  .search .form-section{
+    background:rgba(0,0,0,0.6);
+    border: 2px solid #414141;
+    border-radius: 5px;
+    padding: 10px;
+  }
+  .outer {
+    display: table;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+  }
+  .middle {
+    display: table-cell;
+    vertical-align: middle;
+  }
+  .inner {
+    margin-left: auto;
+    margin-right: auto; 
+  }
+  #carouselExampleIndicators{
+    background-image: url(<%= asset_path 'sample3.jpg' %>)
+  }
+  #location_search_form{
+    .form-group{
+      margin-bottom: 10px;
+    }
+    .row{
+      margin-left: 0px;
+      margin-right: 0px;
+    }
+  }
+  .search_form_slogan{
+    font-size: 4.2857142857em;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    text-shadow: 0 8px 51px rgba(0,0,0,0.7);
+    margin-bottom: 30px;
+  }
+  .panel-body{
+    height: 150px;
+  }
+}
+
+.sign-up-form{
+  border: 1px solid;
+  padding: 20px;
+  margin-bottom: -70px;
+}
+
+@media screen and (min-width: 992px) and (max-width: 1202px){
+  .signup-button{
+    font-size: 10px;
+    min-height: 42px;
+  }
+  .loginBtn{
+    font-size: 12px;
+  }
+}
+
+@media (min-width: 768px){
+  .modal-sm{
+    width: 400px !important;
+  }
+}
+
+#signup_details_modal_h .modal-body{
+  max-height: calc(100vh - 212px);
+  overflow-y: auto;
+}
+
+body.pages.home .col-sm-4-width{
+  width: 33.3333333%;
+}
+
+.social-media-icons {
+  height: 10px;
+  width: 10px;
+}
+
+.features-content .features-content-padding {
+  padding-left:30px;
+}
+
+.features-content i {
+  background: #fff;
+  height: 150px;
+  width: 150px;
+  border-radius: 100%;
+  color: #00afec !important;
+  font-size: 85px;
+  padding-top: 35px;
+  margin-bottom: 20px;
+  transition: .5s;
+  -webkit-transition: .5s;
+  -moz-transition: .5s;
+  -ms-transition: .5s;
+  -o-transition: .5s;
+  -webkit-box-shadow: 1px 1px 1px 0 rgba(55,50,40, .10);
+}
+
+.testimonial-photo img {
+  height: 160px;
+  width: 160px;
+  border: 1px solid #00afec;
+  border-radius: 100%;
+  background: #ff7572;
+  margin-top: 28px;
+  margin-right: 18px;
+}
+
+.testimonial-heading {
+  color: #00afec;
+}
+
+form .stars {
+  background: image-url('stars.png') repeat-x 0 0;
+  width: 150px;
+  margin: 0 auto;
+}
+
+form .stars label {
+  display: block;
+  width: 30px;
+  height: 30px;
+  margin: 0!important;
+  padding: 0!important;
+  text-indent: -999em;
+  float: left;
+  position: relative;
+  z-index: 10;
+  background: transparent!important;
+  cursor: pointer;
+}
+
+form .stars input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+}
+
+form .stars input[type="radio"].star-5:checked ~ span {
+  width: 100%;
+}
+
+form .stars input[type="radio"].star-4:checked ~ span {
+  width: 80%;
+}
+
+form .stars input[type="radio"].star-3:checked ~ span {
+  width: 60%;
+}
+
+form .stars input[type="radio"].star-2:checked ~ span {
+  width: 40%;
+}
+
+form .stars input[type="radio"].star-1:checked ~ span {
+  width: 20%;
+}
+
+form .stars label {
+  display: block;
+  width: 30px;
+  height: 30px;
+  margin: 0!important;
+  padding: 0!important;
+  text-indent: -999em;
+  float: left;
+  position: relative;
+  z-index: 10;
+  background: transparent!important;
+  cursor: pointer;
+}
+
+form .stars label:hover ~ span {
+  background-position: 0 -30px;
+}
+
+form .stars label.star-5:hover ~ span {
+  width: 100% !important;
+}
+
+form .stars label.star-4:hover ~ span {
+  width: 80% !important;
+}
+
+form .stars label.star-3:hover ~ span {
+  width: 60% !important;
+}
+
+form .stars label.star-2:hover ~ span {
+  width: 40% !important;
+}
+
+form .stars label.star-1:hover ~ span {
+  width: 20% !important;
+}
+
+form .stars span {
+  display: block;
+  width: 0;
+  position: relative;
+  top: 0;
+  left: 0;
+  height: 30px;
+  background: url("/app/assets/images/stars.png") repeat-x 0 -60px;
+  -webkit-transition: -webkit-width 0.5s;
+  -moz-transition: -moz-width 0.5s;
+  -ms-transition: -ms-width 0.5s;
+  -o-transition: -o-width 0.5s;
+  transition: width 0.5s;
+}
+
+label.star:before {
+  content: '\f006';
+  font-family: FontAwesome;
+}
+
+#happy-qayaam-mehmaan-coursel .carousel-inner .item.active{
+  background-color: #ffffff;
+}
+
+.no-rooms-available-para{
+  border: 1px solid;
+  padding: 20px;
+  width: 90%;
+}
+.home_page_heading {
+  font-size: 30px;
+  font-family: "Montserrat";
+  color: rgb(72, 72, 72);
+  font-weight: bold;
+}
+
+.round_button {
+  border-radius: 27px;
+  width: 100px;
+}
+
+.round_button.active{
+  font-family: "Raleway";
+  background-color: rgb(0, 175, 236);
+  color: rgb(252, 252, 252);
+}
+
+.round_button:hover{
+  background-position: 0px;
+}
+
+body.pages.home p.near_slogan{
+  font-size: 24px;
+  color: rgb(72, 72, 72);
+}
+
+.featured_places_rectangle {
+  background-color: rgb(242, 239, 239);
+}
+
+.listing_name {
+  font-size: 15px;
+  font-family: ‘Trebuchet MS’, Helvetica, sans-serif;	
+  color: rgb(54, 54, 54);
+  font-weight: bold;
+  line-height: 1.923;
+  -moz-transform: matrix( 1.00087536249906,0,0,0.96150004417279,0,0);
+  -webkit-transform: matrix( 1.00087536249906,0,0,0.96150004417279,0,0);
+  -ms-transform: matrix( 1.00087536249906,0,0,0.96150004417279,0,0);
+}
+
+/* To display text over an image */
+*{
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* relevant styles */
+.img__wrap {
+  position: relative;
+  height: 250px;
+  width: 400px;
+}
+
+.img__description {
+  position: absolute;
+  top: 150px;
+  bottom: 0;
+  left: 5px;
+  right: 0;
+  font-family: ‘Trebuchet MS’, Helvetica, sans-serif;
+  font-size: 30px;
+  font-weight: bold;
+  //background: rgba(29, 106, 154, 0.72);
+  color: #fff;
+  visibility: hidden;
+  opacity: 0;
+
+  /* transition effect. not necessary */
+  transition: opacity .2s, visibility .2s;
+}
+
+.img__wrap:hover .img__description {
+  visibility: visible;
+  opacity: 1;
+}
+
+.listings-block-margin {
+  margin-left: -25px;
+}
+
+.listings-block .panel-default .panel-body {
+  height: 70px;
+}
+
+.listings-block .listings-price-display {
+  margin-top:-16px;
+  margin-left:-7px;
+}
+
+.listings-block .listings-name-display {
+  margin-top:-16px;
+  margin-left:-20px;
+}
+
+.listings-block .listings-home-type {
+  margin-top:-10px;
+  margin-left:-7px;
+  font-size: 15px;
+  color: rgb(54, 54, 54);
+  font-family: ‘Trebuchet MS’, Helvetica, sans-serif;
+}
+
+.listings-block .listings-beds {
+  margin-left:-20px;
+  margin-top:-10px;
+  font-size:15px;
+  color: rgb(54, 54, 54);
+  font-family: ‘Trebuchet MS’, Helvetica, sans-serif;
+}
+
+.listings-block .listings-area {
+  margin-left:-40px;
+  margin-top:-10px;
+  font-size: 13.9px;
+  font-weight: bold;
+  color: rgb(54, 54, 54);
+  font-family: ‘Trebuchet MS’, Helvetica, sans-serif;
+}
+
+.qayaam-explore .image {
+  position: relative;
+  margin-top: 20px;
+  width: 100%;
+  height: 250px;
+}
+
+.qayaam-explore h2 {
+  position: absolute;
+  top: 200px;
+  margin-left: 20px;
+  width: 100%;
+  font-size: 25px;
+  color:  white;
+}
+
+/* display listings page */
+.display-main-picture {
+  margin-bottom: 20px;
+}
+
+.display-main-picture .image {
+  margin-top: -12px;
+  width: 100%;
+  margin-left: -10px;
+  height: 400px;
+}
+
+.display-main-picture h1 {
+  position: absolute;
+  top: 300px;
+  margin-left: 10px;
+  width: 100%;
+  font-size: 60px;
+  color:  white;
+}
+
+.search-form label {
+  font-weight:bold;
+  margin-left: 5px;
+}
+
+.search-form .select_tag {
+  height: 45px;
+  margin-left:-10px;
+}
+
+.coming-soon {
+  font-size:40px;
+  background:#ccc;
+  margin-bottom:100px;
+  margin-right:30px;
+  margin-left:5px;
+  color: #216663;
+}
+
+.no-rooms {
+  font-size:30px;
+  background:#ccc;
+  margin-bottom:100px;
+  margin-right:30px;
+  margin-left:5px;
+  margin-top: 40px;
+  color: #216663;
+}
+
+@media screen and (max-width: 992px) {
+  .listings-block-margin {
+    margin-left: -15px;
+  }
+} 

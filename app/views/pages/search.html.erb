@@ -1,0 +1,155 @@
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<div class="container">	
+  <div class="row">
+    <%= search_form_for @search, url: search_path do |f| %>
+      <div class="col-md-4" style="margin-top:-10px">
+      	<div class="form-group">
+      	  <label> Location: </label>
+      	  <%= select_tag :search, options_for_select(Place.all.collect{ |p| [p.name, p.id] }, @place.id), { :class => "form-control search_select_field"} %>
+      	</div>
+      </div>
+
+      <div class="col-md-2">
+      	<div class="form-group">
+      	  <label> Check In <label>
+  	      <%= text_field_tag :start_date, params[:start_date], placeholder: "Check In", readonly: true, class: "form-control" %>
+      	</div>
+      </div>
+
+      <div class="col-md-2">
+      	<div class="form-group">
+      	  <label> Check Out <label>
+  	      <%= text_field_tag :end_date, params[:end_date], placeholder: "Check Out", readonly: true, class: "form-control" %>
+      	</div>
+      </div>
+	
+      <div class="col-md-4">
+      	<div class="form-group">
+      	  <div class="row">
+      	    <label for="amount">Price range: <input type="text" class="price_range" id="amount" readonly></label>
+      	    <%= f.text_field :price_gteq, class: "hide", value: "" %>
+      	    <%= f.text_field :price_lteq, class: "hide", value: "" %>
+      	  </div>
+      	  <div id="slider-range"></div>
+      	</div>
+      </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-2 col-xs-6 select">
+      <div class="form-group">
+      	<label>Accommodates</label>
+        <%= f.select :accommodate_gteq, [["1",1], ["2",2], ["3",3], ["4",4], ["5",5], ["6+",6]], prompt: "Select...", class: "form-control hidden" %>
+      </div>
+    </div>
+    
+    <div class="col-md-2 col-xs-6 select">
+      <div class="form-group">
+      	<label>Bedrooms</label>
+      	<%= f.select :bed_room_gteq, [["1",1], ["2",2], ["3",3], ["4+",4]], prompt: "Select...", class: "form-control" %>
+      </div>
+    </div>
+    
+    <div class="col-md-2 col-xs-6 select">
+      <div class="form-group">
+      	<label>Bathrooms</label>
+      	<%= f.select :bath_room_gteq, [["1",1], ["2",2], ["3",3], ["4+",4]], prompt: "Select...", class: "form-control" %>
+      </div>
+    </div>
+
+    <% selected_room_types = params[:q][:room_type_eq_any] if params[:q] %>
+
+    <div class="col-md-2" style="padding-top: 40px">
+      <%= check_box_tag "q[room_type_eq_any][]", "Entire", selected_room_types && selected_room_types.include?("Entire") %> Entire Room
+    </div>
+    
+    <div class="col-md-2" style="padding-top: 40px">
+      <%= check_box_tag "q[room_type_eq_any][]", "Private", selected_room_types && selected_room_types.include?("Private") %> Private Room
+    </div>
+    
+    <div class="col-md-2" style="padding-top:40px">
+      <%= check_box_tag "q[room_type_eq_any][]", "Shared", selected_room_types && selected_room_types.include?("Shared") %> Shared Room
+    </div>
+  </div>
+
+  
+  <div class="row">
+    <div class="col-md-2 col-xs-1">
+      <%= check_box_tag "q[is_tv_eq]", true, params[:q] && params[:q][:is_tv_eq] %> TV
+    </div>
+    <div class="col-md-2 col-xs-1">
+      <%= check_box_tag "q[is_internet_eq]", true, params[:q] && params[:q][:is_internet_eq] %> Internet
+    </div>
+    <div class="col-md-2 col-xs-1">
+      <%= check_box_tag "q[is_air_eq]", true, params[:q] && params[:q][:is_air_eq] %> AC
+    </div>
+    <div class="col-md-2 col-xs-1">
+      <%= check_box_tag "q[is_kitchen_eq]", true, params[:q] && params[:q][:is_kitchen_eq] %> Kitchen
+    </div>
+    <div class="col-md-2 col-xs-1">
+      <%= check_box_tag "q[is_heating_eq]", true, params[:q] && params[:q][:is_heating_eq] %> Heating
+    </div>
+    <div class="col-md-2 col-xs-1">
+      <%= f.submit "Search", id: "btn_search_page", class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+		
+  <!--Search Result -->
+  <hr align="center" width="75%">
+  <div class="row">
+    <div class="col-md-8" style="margin-left:-20px">
+      <% if @arrRooms.size > 0%>
+        <% @arrRooms.first(4).each do |room| %>
+          <div class="col-md-6 listing-show-div">
+            <div class="panel panel-default">
+              <%= link_to room_path(room) do %>
+                <div class="panel-heading preview">
+                  <%= image_tag room.photos[0].image.url, style: "height: 225px" %>
+                </div>
+          	    <div class="panel-body">
+          	      <p><%= room.listing_name %></p>
+          	    </div>
+              <% end %>
+            </div>
+          </div>
+      <% end %>
+      <% else %>
+        <h5 class="text-center">No Record Found</h5>
+      <% end %>
+    </div>
+    <!-- Location identification on map -->
+    <div class="col-md-4">
+      <div id="sidebar">
+        <div id="widget" class="sticky" style="width:370px;margin-left:-50px;height:600px">
+          <%= render 'map_home' %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12" style="margin-left:-20px;margin-right:-500px">
+      <% if @arrRooms.drop(4).size > 0%>
+        <% @arrRooms.drop(4).each do |room| %>
+        	<div class="col-md-4 listing-show-div">
+        	  <div class="panel panel-default">
+        	    <%= link_to room_path(room) do %>
+          	    <div class="panel-heading preview">
+          	      <%= image_tag room.photos[0].image.url, style: "height: 225px" %>
+          	    </div>
+          	    <div class="panel-body">
+          	      <p><%= room.listing_name %></p>
+          	    </div>
+        	    <% end %>
+        	  </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
+		
+
+
+

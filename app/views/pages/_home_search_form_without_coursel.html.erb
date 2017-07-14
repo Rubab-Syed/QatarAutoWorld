@@ -1,0 +1,24 @@
+<div class="row row-space-home">
+	<div class="col-sm-12 col-md-12">
+	  <%= form_tag search_path, method: :get, class: 'validate_form' do %>
+	    <div class="location-select col-md-6 col-sm-6">
+	      <%= select_tag :search, options_for_select(Place.all.collect{ |p| [p.name, p.id] }), { class: "search_select_field form-control validate[required]" } %>
+	    </div>
+	    <div class="col-md-2 col-sm-12 colorless-readonly">
+	    	<div class="input-group">
+          <%= text_field_tag :start_date, params[:start_date], placeholder: "Check In", readonly: true,  class: "form-control" %>
+          <span class="input-group-addon open-datepicker-span"><i class="glyphicon glyphicon-calendar"></i></span>
+        </div>
+	    </div>
+	    <div class="col-md-2 col-sm-12 colorless-readonly">
+	      <div class="input-group">
+					<%= text_field_tag :end_date, params[:end_date], placeholder: "Check Out", readonly: true, class: "form-control" %>
+          <span class="input-group-addon open-datepicker-span"><i class="glyphicon glyphicon-calendar"></i></span>
+        </div>
+	    </div>
+	    <div class="col-md-2 col-sm-12">
+	      <%= submit_tag "Search", id: "btn_home_search", class: "btn btn-primary btn-lg" %>
+	    </div>
+	  <% end %>
+	</div>
+</div>

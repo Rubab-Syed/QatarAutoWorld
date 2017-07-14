@@ -1,0 +1,271 @@
+<div> 
+  <div class="panel-body">
+    <%= form_for([@room, @room.reservations.new], :remote => true, class: "validate_form") do |f| %>
+      <div class="col-md-12 price_tag">
+	<span class="nightly-reservation-price reservation-price hidden large-font">Rs.<%= @room.price %></span>
+	<span class="weekly-reservation-price reservation-price hidden large-font">Rs.<%= @room.weekly_price %></span>
+	<span class="monthly-reservation-price reservation-price hidden large-font">Rs.<%= @room.monthly_price %></span>
+	<select class="minimal reservation-type-select medium-font" name="reservation[reservation_time]">
+	  <%= get_reservations_options(@room).html_safe %>
+	</select>
+      </div>
+
+      <div class="col-md-6 space-1 form-group">
+	<label>
+	  Check in
+	  <a title='These check-in and check-out dates do not take part in the calculation, rent calculation is based on the days, weeks or month you enter and it can be changed in future as well on the census of both parties', 'data-toggle'='tooltip', 'data-placement'='top'><i class="fa fa-question-circle" aria-hidden="true"></i></a>
+	</label>
+	<%= f.text_field :start_date, readonly: true, placeholder: "dd-mm-yy", class: "form-control" %>
+      </div>
+
+      <div class="nightly_fields reservation_type_specific_fields hidden">
+	<div class="col-md-6 space-1 form-group">
+	  <label>
+	    Enter no. of days
+	  </label>
+	  <%= f.number_field :num_days, { min: 1, placeholder: "No. of days", class: "form-control calculate-rent validate[required]" } %>
+	</div>
+      </div>
+      
+      <div class="weekly_fields reservation_type_specific_fields hidden">
+	<div class="col-md-6 space-1 form-group">
+	  <label>
+	    Enter no. of weeks
+	  </label>
+	  <%= f.number_field :num_weeks, { min: 1, placeholder: "No. of weeks", class: "form-control calculate-rent validate[required]" } %>
+	</div>
+      </div>
+      
+      <div class="monthly_fields reservation_type_specific_fields hidden">
+	<div class="col-md-6 space-1 form-group">
+	  <label>
+	    Enter no. of months
+	  </label>
+	  <%= f.number_field :num_months, { min: 1, placeholder: "No. of months", class: "form-control calculate-rent validate[required]" } %>
+	</div>
+      </div>
+      
+      <div class="col-md-12 space-1 form-group text-left" style="margin-top:-15px">
+	<p class="medium-font"><span class="asterisk">*</span> By booking, I agree to all the House Rules and Conditions set by the Mezbaan</p>
+      </div>
+
+      <div id="hidden_reservation_fields">
+	<%= f.hidden_field :room_id, value: @room.id %>
+	<%= f.hidden_field :price, value: @room.price, :id => "reservation_unit_amount" %>
+	<%= f.hidden_field :total, id: "reservation_total" %>
+      </div>
+      <div class="col-sm-12 text-center">
+      	<%= f.submit "BOOK", id: 'btn_book', class: "btn btn-primary round_button_red nohover noactive booking-btn" %>
+      </div>
+      <% end %>
+  </div>
+</div>
+
+<div id="house_rules_holder">
+</div>
+
+<div id="update-phone-number-holder">
+</div>
+
+<!-- Modal for booking -->
+<div class="modal fade" id="booking_details_modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+	<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+	<h3 class="modal-title" id="lineModalLabel">Booking Details</h3>
+      </div>
+      <div class="modal-body">
+	<div class="row">
+	  <div class="col-md-8 col-md-offset-2">
+	  <% if @room.photos.blank? %>
+            <%= image_tag "defaulthouse.jpg", class: "img-responsive", style:"height:300px" %>
+          <% else %>
+	    <%= image_tag @room.photos[0].image.url, class: "img-responsive", style:"height:300px" %>
+          <% end %>    
+	  </div>
+	</div>
+	<div class="row" style="margin-top:20px">
+	  <div class="col-md-4 col-md-offset-2">
+	    <h4 id="price_type"></h4>
+	    <h4>Service Charges</h4>
+	  </div>
+	  <div class="col-md-4 col-md-offset-2">
+	    <h4 id="price_total"></h4>
+	    <h4 id="service_charges"></h4>
+	  </div>
+	   <hr align="center" style="color:red" width="75%">
+	</div>
+	<div class="row">
+	  <div class="col-md-4 col-md-offset-2">
+	    <h4>Total</h4>
+	  </div>
+	  <div class="col-md-4 col-md-offset-2">
+	    <h4 id="final_total"></h4>
+	  </div>
+	</div>
+      </div>
+
+      <div class="modal-footer">
+	<div class="btn-group btn-group-justified" role="group" aria-label="group button">
+	  <div class="btn-group" role="group">
+	    <button type="button" class="btn btn-danger" data-dismiss="modal"  role="button">Close</button>
+	  </div>	  
+	</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="ready_to_book">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title">Ready to Book</h2>
+        <button type="button" class="close hidden" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body text-left">
+        <p>Your information is now updated and you are ready to book the room now</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+
+
+
+
+	function unavailable(date) {
+		dmy = date.getDate() + "-" + (date.getMonth()+1) + "-" + date.getFullYear();
+		return [$.inArray(dmy, unavailableDates) == -1];
+	}
+
+	$(function() {
+
+		unavailableDates = [];
+		$.ajax({
+			url: '/preload',
+			data: {'room_id': <%= @room.id %>},
+			dataType: 'json',
+			success: function(data) {
+				$.each(data, function(arrID, arrValue) {
+					for(var d = new Date(arrValue.start_date); d <= new Date(arrValue.end_date); d.setDate(d.getDate() + 1)) {
+						unavailableDates.push($.datepicker.formatDate('d-m-yy', d));
+					}
+				});
+
+				$('#reservation_start_date').datepicker({
+					dateFormat: 'dd-mm-yy',
+					minDate: 0,
+					maxDate: '9m',
+					beforeShowDay: unavailable,
+					onSelect: function(selected) {
+						$('#reservation_end_date').datepicker("option", "minDate", selected);
+						$('#reservation_end_date').attr('disabled', false);
+
+						var start_date = $(this).datepicker('getDate');
+						var end_date = $('#reservation_end_date').datepicker('getDate');
+						var days = (end_date - start_date)/1000/60/60/24 + 1
+
+						var input = {
+							'start_date': start_date,
+							'end_date': end_date,
+							'room_id': <%= @room.id %>
+						}
+						if(start_date != null && end_date != null){
+							$.ajax({
+								url: "/preview",
+								data: input,
+								success: function(data) {
+
+									if (data.conflict) {
+
+										$('#message').text("This date range is not available.");
+										$('#preview').hide();
+										$('#btn_book').attr('disabled', true);
+
+									} else {
+
+										// $('#preview').show();
+										$('#btn_book').attr('disabled', false);
+
+										// var total = days * <%= @room.price %>
+										// $('#reservation_days').text(days);
+										// $('#reservation_sum').text(total);
+										// $('#reservation_total').val(total);
+									}
+								}
+							});
+						}
+					}
+				});
+
+				$('#reservation_end_date').datepicker({
+					dateFormat: 'dd-mm-yy',
+					minDate: 0,
+					maxDate: '9m',
+					beforeShowDay: unavailable,
+					onSelect: function(selected) {
+						$('#reservation_start_date').datepicker("option", "maxDate", selected);
+
+						var start_date = $('#reservation_start_date').datepicker('getDate');
+						var end_date = $(this).datepicker('getDate');
+						var days = (end_date - start_date)/1000/60/60/24 + 1
+
+						var input = {
+							'start_date': start_date,
+							'end_date': end_date,
+							'room_id': <%= @room.id %>
+						}
+
+						$.ajax({
+							url: "/preview",
+							data: input,
+							success: function(data) {
+
+								if (data.conflict) {
+
+									$('#message').text("Those dates are not available");
+									$('#preview').hide();
+									$('#btn_book').attr('disabled', true);
+
+								} else {
+
+									// $('#preview').show();
+									$('#btn_book').attr('disabled', false);
+
+									// var total = days * <%= @room.price %>
+									// $('#reservation_days').text(days);
+									// $('#reservation_sum').text(total);
+									// $('#reservation_total').val(total);
+								}
+							}
+						});
+
+					}
+				});
+			}
+		});
+
+		$('body').on('change', '.calculate-rent', function(){
+			$('.rent-detail-div').removeClass('hidden');
+			var units = parseInt($(this).val());
+			if($('.reservation-type-select').val() == "nightly"){
+				var total = units * <%= @room.price.present? ? @room.price : 0 %>;
+			} else if ($('.reservation-type-select').val() == "weekly"){
+				var total = units * <%= @room.weekly_price.present? ? @room.weekly_price : 0 %>;
+			} else if ($('.reservation-type-select').val() == "monthly"){
+				var total = units * <%= @room.monthly_price.present? ? @room.monthly_price : 0 %>;
+			}
+			$('#reservation_sum').text(total);
+			$('#reservation_total').val(total);
+			$('reservation_unit_amount').val(units);
+		});
+});
+</script>

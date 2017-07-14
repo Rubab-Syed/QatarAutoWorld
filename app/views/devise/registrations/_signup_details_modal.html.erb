@@ -1,0 +1,54 @@
+<div class="modal fade" id="signup_details_modal_h">
+  <div class="modal-dialog" role="document">
+    <%= form_for resource, as: resource_name, url: registration_path(resource_name), :html => { class: 'validate_form_signup_details', id:'signup_form' } do |f| %>
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title text-center">Complete Sign Up
+	    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button></h3>
+        </div>
+        <div class="modal-body text-left hideoverflow" id="signup_modal_body">
+          <div class="col-md-6 form-group-signup">
+            <label>Full Name<span class="asterisk">*</span></label>
+            <%= f.text_field :fullname, autofocus: true, :class => "form-control validate[required]", :id => "name", :placeholder => "Full Name" %>
+          </div>
+          <div class="col-md-6 form-group-signup">
+            <label>Email<span class="asterisk">*</span></label>
+            <%= f.email_field :email, autofocus: true, :class => "form-control validate[required]", :id => "email", :placeholder => "Email" %>
+          </div>
+          <div class="col-md-6 form-group-signup">
+            <label>Password<span class="asterisk">*</span></label>
+            <%= f.password_field :password, autocomplete: "off", :class => "form-control validate[required]", :placeholder => "Password" %>
+          </div>
+          <div class="col-md-6 form-group-signup">
+            <label>Phone Number (03xx-xxxxxxx)<span class="asterisk">*</span></label>
+            <%= f.text_field :phone_number, :class => "form-control phone_number_field validate[required]", :placeholder => "Phone Number (03xx-xxxxxxx)" %>
+          </div>
+          <div class="col-md-6 form-group-signup">
+            <label>CNIC (xxxxx-xxxxxxx-x)<span class="asterisk">*</span></label>
+            <%= f.text_field :cnic, :placeholder => "CNIC (xxxxx-xxxxxxx-x)", :class => "form-control cnic_field validate[required] mb10" %>
+          </div>
+          <div class="col-md-6 form-group-signup">
+            <label>City</label>
+            <%= f.text_field :city, :placeholder => "City Name", :class => "form-control mb10" %>
+          </div>
+          <div class="col-md-6 form-group-signup">
+            <label>Status</label>
+            <%= f.select :status, User.statuses.map { |key, value| [key.humanize, key] }, :class => "form-control" %>
+          </div>
+          <div class="col-md-6 form-group-signup">
+            <label>Describe Your Work</label>
+            <%= f.text_area :description_of_work, :placeholder => "Describe what you do in 2 to 3 lines, This will help us understand you better", :class => "form-control" %>
+          </div>
+          
+        </div>
+        <div class="modal-footer">
+          <%= f.submit "Sign Up", :class => "btn btn-success medium-font" %>
+          <%= link_to "Cancel", root_url, { :class => "btn btn-danger medium-font" } %>
+          <!-- <button type="button" class="btn btn-success">Update Information</button> -->
+          <!-- <button type="button" class=§"btn btn-secondary" data-dismiss="modal">Close</button> -->
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+<div class="spinner" id="signup_spinner"></div>

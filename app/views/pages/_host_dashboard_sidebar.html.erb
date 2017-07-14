@@ -1,0 +1,17 @@
+<div class="col-md-3">
+	<ul class="sidebar-list">
+		<li class="sidebar-item"><%= link_to "Manage Your Listings", rooms_path, class: "sidebar-link btn special-button #{(controller.controller_name == 'rooms' && controller.action_name == 'index') ? 'active_link' : '' }" %>
+		</li>
+		<li class="sidebar-item"><%= link_to "Received Reservations", received_reservations_path, class: "sidebar-link btn special-button #{(controller.controller_name == 'reservations' && controller.action_name == 'received_reservations') ? 'active_link' : '' }" %>
+		</li>
+		<li class="sidebar-item">
+			<button type="button" class="sidebar-link btn special-button" data-toggle="modal" data-target="#comming_soon_modal">Earnings</button>
+			<%= link_to "Earnings", host_earning_path, class: "hidden sidebar-link btn special-button #{(controller.controller_name == 'pages' && controller.action_name == 'host_earning') ? 'active_link' : '' }" %>
+		</li>
+		<li class="sidebar-link">
+			<button type="button" class="sidebar-link btn special-button" data-toggle="modal" data-target="#comming_soon_modal">Booking Schedule</button>
+			
+			<%= link_to "Booking Schedule", host_earning_path, class: "hidden sidebar-link btn special-button #{(controller.controller_name == 'pages' && controller.action_name == 'host_earning') ? 'active_link' : '' }" %>
+		</li>
+	</ul>
+</div>

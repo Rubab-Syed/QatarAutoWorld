@@ -1,0 +1,39 @@
+<div class="container">
+	<div class="space-maker">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				Your Trip History
+			</div>
+			<div class="panel-body text-center">
+			  <% @trips.each do |trip| %>
+				<div class="row">
+					<div class="col-md-2">
+						<h5><%= trip.start_date.strftime('%v') %><br>
+						<%= trip.end_date.strftime('%v') %></h5>
+					</div>
+					<div class="col-md-2">
+						<%= image_tag trip.room.photos[0].image.url(:thumb) %>
+					</div>
+					<div class="col-md-3">
+						<h5><%= trip.room.address %></h5>
+					</div>
+					<div class="col-md-2">
+					    <%= link_to user_path(trip.room.user) do %>
+						<%= image_tag trip.room.user.avatar.url, class: "img-circle avatar-large" %>
+						<% end %><br>
+						<strong><%= trip.room.user.fullname %></strong><br>
+						Your Host
+					</div>
+					<div class="col-md-2">
+						<h4>$<%= trip.total %></h4>
+					</div>
+					<div class="col-md-1">
+						<%= link_to "View", room_path(trip.room), class: "label label-success" %>
+					</div>
+				</div>
+				<hr>
+			  <% end %>
+			</div>
+		</div>
+	</div>
+</div>

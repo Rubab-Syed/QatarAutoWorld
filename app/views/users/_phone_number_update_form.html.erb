@@ -1,0 +1,43 @@
+<div class="modal fade" id="update_phone_number_modal">
+  <div class="modal-dialog" role="document">
+    <%= form_for(user, url: registration_path(user)) do |f| %>
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title text-center">Completing SignUp</h2>
+          <button type="button" class="close hidden" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body text-left">
+          <p>We are completing your signup process. Please verify the information about you and provide phone number and CNIC to continue</p>
+          <%= f.hidden_field :provider, :value => f.object.provider %>
+          <%= f.hidden_field :uid, :value => f.object.uid %>
+          <%= f.hidden_field :image, :value => f.object.image %>
+          <%= f.hidden_field :password, :value => f.object.password %>
+          <%= f.hidden_field :confirmed_at, :value => f.object.confirmed_at %>
+          
+          
+          <label>Full Name</label>
+          <%= f.text_field :fullname, :value =>  f.object.fullname, :placeholder => "Full Name", :class => "form-control mb10" %>
+
+          <label>Email</label>
+          <%= f.text_field :email, :value => f.object.email, :placeholder => "Email", :class => "form-control mb10" %>
+
+          <label>Phone Number</label>
+          <%= f.text_field :phone_number, :placeholder => "Phone Number (03XX-XXXXXXX)", :class => "form-control phone_number_field mb10" %>
+          
+          <label>CNIC</label>
+          <%= f.text_field :cnic, :placeholder => "Enter Your CNIC (XXXXX-XXXXXXX-X)", :class => "form-control cnic_field mb10" %>
+
+          <%= hidden_field_tag :just_phone_number, true %>
+        </div>
+        <div class="modal-footer">
+          <%= f.submit "Sign up", :class => "btn btn-success" %>
+          <%= link_to "cancel", root_url, { :class => "btn btn-default" } %>
+          <!-- <button type="button" class="btn btn-success">Update Information</button> -->
+          <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

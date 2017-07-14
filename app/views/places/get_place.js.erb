@@ -1,0 +1,3 @@
+map_marker.setPosition(new google.maps.LatLng(<%= @place.latitude %>, <%= @place.longitude %>))
+map.setCenter(new google.maps.LatLng(<%= @place.latitude %>, <%= @place.longitude %>));
+map.setZoom(<%= get_map_zoom_level @place %>);

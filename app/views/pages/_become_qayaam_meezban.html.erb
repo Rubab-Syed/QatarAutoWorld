@@ -1,0 +1,39 @@
+<%= form_for user, url: new_user_registration_path, method: :get, :remote => true, :html => { class: 'validate_form' } do |f| %>
+  <div class="col-md-12 col-sm-12">
+    <p class="text-center become_qayaam_meezban"><span class="qayaam-mezbaan">Become a</span> Mezbaan</p>
+  </div>
+  <div class="col-md-12 col-sm-12">
+    <%= f.email_field :email, :class => "form-control mb10 validate[required]", placeholder: "Email" %>
+  </div>
+  <div class="col-md-8 col-sm-12">
+    <%= f.text_field :phone_number, :class => "form-control phone_number_field validate[required]", placeholder: "Phone Number" %>
+  </div>
+  <div class="col-md-4 col-sm-12 pl0">
+    <%= f.submit :Signup, class: "form-control generic-red-button signup-button medium-font" %>
+  </div>
+<% end %>
+
+<div class="col-sm-12">
+  <p class="text-center"><b>or</b></p>
+</div>
+
+<div class="col-sm-12">
+  <%= link_to user_facebook_omniauth_authorize_path do %>
+    <button class="medium-font loginBtn loginBtn--facebook" scope="public_profile,email"  id="loginBtnfb">
+      Log In with Facebook
+    </button>
+    <button class="hidden btn btn-default form-control blue-border" scope="public_profile,email"  id="loginBtnfb">
+      Log In with Facebook
+    </button>
+    <% end %>
+</div>
+
+<div class="col-sm-12">
+  <button class="hidden loginBtn loginBtn--google" id="loginBtnG" disabled title="Comming Soon">
+    Log In with Google
+  </button>
+  <button class="btn btn-default form-control blue-border hidden" id="loginBtnG" disabled title="Comming Soon">
+    Log In with Google
+  </button>
+</div>
+

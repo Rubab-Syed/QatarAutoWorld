@@ -1,0 +1,36 @@
+<div class="conversation-show">
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2">
+			
+			<div class="panel panel-default">
+				<div class="panel-heading">Your Conversations</div>
+					<div class="panel-body">				
+					    <% @conversations.each do |conversation| %>
+							<% other = conversation.sender == current_user ? conversation.recipient : conversation.sender %>
+
+							<%= link_to conversation_messages_path(conversation) do %>
+								<div class="row conversation text-center">
+									<div class="col-md-2">
+									<% if other.avatar.present? %>
+										<%= image_tag other.avatar.url, class: "img-circle avatar-medium" %><% end %>
+									</div>
+									
+									<div class="col-md-2">
+										<strong><%= other.fullname %></strong><br>
+										<%= conversation.messages.last.message_time if conversation.messages.last.present? %>
+									</div>
+
+									<div class="col-md-8">
+										<%= conversation.messages.last.content if conversation.messages.last.present? %>
+									</div>
+								</div>
+								<hr>
+
+							<% end %>
+						<% end %>
+					</div>
+			</div>
+			
+		</div>
+	</div>
+</div>

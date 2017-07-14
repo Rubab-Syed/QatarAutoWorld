@@ -1,0 +1,44 @@
+<% if room.nearbys(10).present? %>
+  <div class="row near-by">
+    <div class="col-md-12">
+      <h4> Near by Places </h4><br>
+      <% for room in room.nearbys(10).limit(3) %>
+        <%= link_to room_path(room), :class => "colorless-link col-md-4" do %>
+          <div class="col-space-panel">
+            <div class="panel panel-default">
+              <div class="panel-heading preview">
+                <% if room.photos.present? %>
+                  <%= image_tag room.photos[0].image.url(:medium), class: "img-home"%>
+                <% else %>
+                  <%= image_tag "defaulthouse.jpg", class: "img-home"%>
+                <% end %>
+              </div>
+              <div class="panel-body">
+		<div class="row">
+                  <div class="col-xs-4 listings-price-display">
+                    <p class="listing_name"><%= room.get_first_available_price %></p>
+                  </div>
+                  <div class="col-xs-8 listings-name-display">
+                    <p class="listing_name"> <%= truncate(room.listing_name, length: 27,
+                      :separator => ' ', :omission => '.....') %></p>
+                  </div>
+		  </div>
+		<div class="row">
+                  <div class="col-xs-4 listings-home-type">
+                    <p><%= room.home_type %></p>
+                  </div>
+                  <div class="col-xs-4 listings-beds">
+                    <p><%= room.bed_room %> bed(s)</p>
+                  </div>
+                  <div class="col-xs-4 listings-area">
+		    <p><%= room.distance.round(2) %> miles away</p>
+                  </div>
+		  </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+<% end %>

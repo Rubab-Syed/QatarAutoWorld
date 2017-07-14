@@ -1,0 +1,57 @@
+<% if reservations.count > 0 %>
+	<% reservations.each do |reservation| %>
+		<div class="row">
+			<div class="col-md-3">
+				<% if reservation.user.avatar.present? %>
+					<%= link_to user_path(reservation.user) do %>
+						<%= image_tag get_avatar_url(reservation.user.avatar.url), class: "img-circle avatar-medium" %> 
+					<% end %>
+				<% end %>
+				<strong class = "user-name-bold">
+					<%= link_to reservation.user.fullname, conversations_path(sender_id: current_user.id, recipient_id: reservation.user.id), method: 'post' %>
+				</strong>
+				Your Guest
+			</div>
+			<div class="col-md-2">
+				<h5>Check-In:<%= reservation.start_date.strftime('%v') if reservation.start_date.present? %><br>
+				<%= reservation.end_date.strftime('%v') if reservation.end_date.present?%></h5>
+				<% if reservation.num_days.present? %>
+				  <h5>Stay span: <%= reservation.num_days %> day(s)</h5>
+                                <% elsif reservation.num_weeks.present? %>
+                                  <h5>Stay span: <%= reservation.num_weeks %> week(s)</h5>
+                                <% elsif reservation.num_months.present? %>
+                                  <h5>Stay span: <%= reservation.num_months %> month(s)</h5>
+                                <% end %>
+			</div>
+			<div class="col-md-2">
+			    <%= link_to room_path(reservation.room) do %>
+				<h5><%= reservation.room.postal_address.present? ? reservation.room.postal_address : "Open" %></h5> <% end %>
+			</div>
+			<div class="col-md-3">
+				<h4>Rs. <%= reservation.total %></h4>
+			</div>
+
+			<div class="col-md-2">
+			  <% if status == "request_sent" %>
+			    <%= link_to approve_room_reservation_path(reservation.room.id, reservation.id, :current_tab => "request_sent"), title: 'Approve', 'data-toggle' => 'tooltip', 'data-placement' => 'bottom', method: 'post' do %>
+			      <i class="fa fa-check fa-2x"></i>
+			    <% end %>
+			    <%= link_to reject_room_reservation_path(reservation.room.id, reservation.id, :current_tab => "request_sent"), title: 'Reject', 'data-toggle' => 'tooltip', 'data-placement' => 'bottom', method: 'post' do %>
+			      <i class="fa fa-times-circle fa-2x"></i>
+			    <% end %>
+			  <% elsif status == "rejected" %>
+			    <%= link_to approve_room_reservation_path(reservation.room.id, reservation.id, :current_tab => "rejected"), title: 'Approve', 'data-toggle' => 'tooltip', 'data-placement' => 'bottom', method: 'post' do %>
+			      <i class="fa fa-check fa-2x"></i>
+			    <% end %>
+			  <% elsif status == "payment_confirmed" %>
+			    <%= link_to complete_room_reservation_path(reservation.room.id, reservation.id, :current_tab => "payment_confirmed"), title: 'Complete', 'data-toggle' => 'tooltip', 'data-placement' => 'bottom', method: 'post' do %>
+			      <i class="fa fa-check fa-2x"></i>
+			    <% end %>
+			  <% end %>
+			</div>
+		</div>
+		<hr>
+	<% end %>
+<% else %>
+	<p>No Reservation to show</p>
+<% end %>

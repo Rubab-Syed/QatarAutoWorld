@@ -1,0 +1,57 @@
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container-fluid">
+    <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+	<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+	  <span class="sr-only">Toggle navigation</span>
+	  <span class="icon-bar"></span>
+	  <span class="icon-bar"></span>
+	  <span class="icon-bar"></span>
+	</button>
+	<%= link_to "Qayaam", root_path, class: "navbar-brand qayaam-default-color" %>
+      </div>
+      
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+	<ul class="nav navbar-nav navbar-right">
+	  <!--<li><%= link_to "How It Works", how_it_works_url, :class => "hidden" %></li>-->
+	  <li><%= link_to "Partners", partners_url %></li>
+	  <% if current_user.present? and current_user.rooms.count > 0 %>
+	  	<li><%= link_to "Mezbaan", rooms_path %></li>
+	  <% elsif current_user.present? %>
+	  	<li><%= link_to "Add Room", new_room_path %></li>
+	  <% end %>
+	  
+	  <% if(!user_signed_in?) %>
+	    <li><%= link_to "Partners", partners_path, class: "hidden" %></li>
+	    <li><%= link_to "Sign Up", new_user_registration_path, :remote => true, :class => "" %></li>
+	    <li><%= link_to "Log In", new_user_session_path %></li>
+	  	<!--<li><%= link_to "How to Use", "#" %></li>-->
+	  <% else %>
+	  <li>
+	    <%= link_to conversations_path do %>
+	    <span class="fa fa-envelope o"></span> Messages
+	    <% end %>
+          </li>
+	  <li class="dropdown">
+	    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+	      <%= image_tag get_avatar_url(get_user_profile_pic(current_user)), class: "avatar-small" %>&nbsp;
+	      <%= current_user.fullname %> <span class="caret"></span>
+	      
+	    </a>
+	    
+	    <ul class="dropdown-menu">
+	      <li><%=link_to "Host Dashboard", rooms_path %></li>
+	      <li><%=link_to "Trips History", trips_history_path %></li>
+	      <li><%=link_to "Edit Profile", edit_user_registration_path %></li>
+	      <li><%=link_to "Profile", user_path(current_user) %></li>
+	      <li role="seperator" class="divider"></li>
+	      <li><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
+	      <% end %>				  
+	    </ul>
+      </div>
+
+    </div>
+  </div>
+</nav>

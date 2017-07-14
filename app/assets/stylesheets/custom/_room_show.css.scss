@@ -1,0 +1,61 @@
+.img-responsive {
+  width: 100%;
+}
+
+.row .col-sm-3 {
+  margin-bottom: 20px;
+  color: #ff5a5f;
+}
+
+
+.rooms.show .row .col-sm-2 {
+  margin-bottom: 20px;
+  color: #ff5a5f;
+}
+
+.text-line-through {
+  text-decoration: line-through;
+  color: #565a5c;
+}
+
+.panel-heading.nearby img {
+  width: 100%;
+}
+.panel-heading.nearby {
+  padding: 0;
+}
+
+.glyphicon-fire.glyphicon  {
+  font-size: 25px;
+}
+
+/* Book now button */
+
+#btn-booknow {
+  margin-top: 20px;
+}
+
+#room_show_title {
+  margin-left: 30px;
+}
+
+.glyphicon-trash {
+  color: #ff5a5f;
+}
+
+.review_create {
+  margin-left: 30px;
+}
+
+/* Booking Panel */
+
+.booking-panel {
+  border-color: #404040;
+  height: 430px;
+}
+
+@media screen and (max-width: 479px) {
+  .booking-panel {
+    height: 520px;
+  } 
+}

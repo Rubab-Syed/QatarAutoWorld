@@ -1,0 +1,34 @@
+<% if @reviews.count == 0 %>
+<% else %>
+	<% @reviews.order("id desc").each do |r| %>
+	<div class="row">
+		<div class="col-md-1 col-md-offset-1">
+			<%= image_tag get_avatar_url(r.user.avatar.url), class: "img-circle avatar-medium" %>
+		</div>
+
+		<div class="col-md-10">
+			<div>
+				<strong><%= r.user.fullname %><br> <div id="stars_<%= r.id %>"></div></strong>
+			</div>
+			<div><%= r.created_at.strftime("%v") %></div>
+
+			<div><%= r.comment %></div>
+
+			<% if current_user && current_user == r.user %>
+				<%= link_to [@room, r], method: :delete, data: { confirm: 'Are you sure?' } do %>
+                      <span class="glyphicon glyphicon-trash" </span>
+                      <% end %>
+			<% end %>
+		</div>
+				<hr align="center" width="75%"><br>
+
+	</div>
+		<script>
+			$('#stars_<%= r.id %>').raty({
+				path: '/assets',
+				readOnly: true,
+				score: <%= r.star %>
+			});
+		</script>
+	<% end %>
+<% end %>

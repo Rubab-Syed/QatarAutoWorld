@@ -1,0 +1,39 @@
+<div class="container">
+	<div class="col-md-12 space-maker-hiw mb10">
+		<%= render partial: "pages/earning_range_selecter" %>
+	</div>
+	<div class="row">
+		<%= render partial: "pages/host_dashboard_sidebar" %>
+		<div class="col-md-9">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					Received Reservations
+				</div>
+				<div id="tabs">
+				  <ul>
+				    <li><a href="#request_sent">Pending Requests</a></li>
+				    <li><a href="#payment_pending">Pending Payments</a></li>
+				    <li><a href="#payment_confirmed">Confirmed Payments</a></li>
+				    <li><a href="#rejected">Rejected</a></li>
+				    <li><a href="#completed">Completed</a></li>
+				  </ul>
+				  <div id="request_sent" class="panel-body text-center">
+				    <%= render partial: "reservations/show_reservations", locals: { reservations: @rooms.map{|r| r.reservations }.flatten.select{ |r| r.status == "request_sent"}, status: "request_sent" } %>
+				  </div>
+				  <div id="payment_pending" class="panel-body text-center">
+				    <%= render partial: "reservations/show_reservations", locals: { reservations: @rooms.map{|r| r.reservations }.flatten.select{ |r| r.status == "payment_pending"}, status: "payment_pending" } %>
+				  </div>
+				  <div id="rejected" class="panel-body text-center">
+				    <%= render partial: "reservations/show_reservations", locals: { reservations: @rooms.map{|r| r.reservations }.flatten.select{ |r| r.status == "rejected"}, status: "rejected" } %>
+				  </div>
+				  <div id="payment_confirmed" class="panel-body text-center">
+				    <%= render partial: "reservations/show_reservations", locals: { reservations: @rooms.map{|r| r.reservations }.flatten.select{ |r| r.status == "payment_confirmed"}, status: "payment_confirmed" } %>
+				  </div>
+				  <div id="completed" class="panel-body text-center">
+				    <%= render partial: "reservations/show_reservations", locals: { reservations: @rooms.map{|r| r.reservations }.flatten.select{ |r| r.status == "completed"}, status: "completed" } %>
+				  </div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

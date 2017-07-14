@@ -1,0 +1,175 @@
+<div class="col-md-12">
+	<div class="row">
+		<div class="panel panel-default">
+			<div class="panel-body">
+				<!-- Image -->
+				<div class="row">
+				  <div class="col-md-12 text-center">
+				    <h4><b><em><%= @room.listing_name %></em></b></h4>
+				    <%= @room.address %><br><br>	
+				  </div>
+				  <div class="col-md-12">
+				    <div class="col-md-4 text-center">
+				      <div class="row-space-2">
+								<% if @room.user.avatar.present? %>
+				          <%= link_to user_path(@room.user) do %>
+				          	<%= image_tag @room.user.avatar.url, class: "img-circle avatar-large" %>
+				          <% end %>
+				        <% else %>
+				          <%= image_tag "default-user-image.png", class: "img-circle default-avatar-large" %> 
+				        <% end %>
+				        
+				        </br>
+				        <b><%= @room.user.fullname %></b>
+							</div>
+				    </div>
+				    <div class="col-md-8">
+				      <%= image_tag @photos[0].image.url, class: "img-responsive" if @photos.length > 0 %>
+				    </div>
+				  </div>
+				</div>
+
+				<br>			
+
+				<!-- Main Info -->
+				<div class="row">
+					<div class="col-md-12">
+						<div class="row">							
+							<div class="col-md-9 text-center col-space-1">
+							  <div class="row row-space-3">
+									<div class="col-sm-3">
+										<i class="fa fa-home fa-2x"></i><br>
+										<%= @room.home_type %>
+									</div>
+									<div class="col-sm-3">
+										<i class="fa fa-users fa-2x"></i><br>
+										<%= @room.accommodate %> <%= @room.accommodate > 1? "Guests" : "Guest" %>
+									</div>
+									<div class="col-sm-3">
+										<i class="fa fa-bed fa-2x"></i><br>
+										<%= @room.bed_room %> <%= @room.bed_room > 1? "Bedrooms" : "Bedroom" %>
+
+									</div>
+									<div class="col-sm-3">
+										<i class="fa fa-ship fa-2x"></i><br>
+										<%= @room.bath_room %> <%= @room.bath_room > 1? "Bathrooms" : "Bathroom" %>
+									</div>
+								</div>
+
+							</div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<hr align="center" width="75%">
+				<!-- About -->
+		       <h4 id="room_show_title">About this space </h4>
+				<div class="row">
+					<div class="col-md-10 col-md-offset-1">
+						<p><%= @room.summary %></p>
+					</div>
+				</div>
+
+				<hr align="center" width="75%">
+				<!-- Amenities -->
+				<h4 id="room_show_title"> Amenities </h4>
+		        <div class="row">
+		        	<div class="col-md-10 col-md-offset-1">
+		        		<div class="row text-center row-space-1">
+		        			<div class="col-sm-2">
+		        				<i class="fa fa-television fa-2x"></i><br>
+		        				<p class="<%= 'text-line-through' if !@room.is_tv %>">TV</p>
+		        			</div>
+		        			<div class="col-sm-2">
+		        				<i class="fa fa-wifi fa-2x"></i><br>
+		        				<p class="<%= 'text-line-through' if !@room.is_internet %>">Internet</p>
+		        			</div>
+		        			<div class="col-sm-2">
+		        				<i class="fa fa-cutlery fa-2x"></i><br>
+		        				<p class="<%= 'text-line-through' if !@room.is_kitchen %>">Kitchen</p>
+		        			</div>
+		        			<div class="col-sm-2">
+		        				<i class="fa fa-chevron-down fa-2x"></i><br>
+		        				<p class="<%= 'text-line-through' if !@room.is_air %>">AC</p>
+		        			</div>
+		        			<div class="col-sm-2">
+		        				<i class="glyphicon glyphicon-fire"></i><br>
+		        				<p class="<%= 'text-line-through' if !@room.is_heating %>">Heating</p>
+		        			</div>
+		        		</div>
+		        	</div>
+		        </div>
+				<!-- Image Carousel -->			
+				<div class="row">
+					<div class="col-md-6 col-md-offset-3">
+						<div id="myCarousel" class="carousel slide" data-ride="carousel">
+		  					<!-- Indicators -->
+		  					<% if @photos %>
+								  <ol class="carousel-indicators">
+								  	<% @photos.each do |photo| %>
+								    	<li data-target="#myCarousel" data-slide-to="<%= photo.id %>"></li>
+								    <% end %>
+								  </ol>
+							<% end %>
+							<!-- Wrapper for slides -->
+							<div class="carousel-inner" role="listbox">
+								<% if @photos %>
+									<% @photos.each do |photo| %>
+									    <div class="item <%= 'active' if photo.id == @photos[0].id %>">
+									      <%= image_tag photo.image.url %>
+									    </div>
+									 <% end %>
+								<% end %>
+							</div>
+
+							<!-- Left and right controls -->
+							<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+								<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+								<span class="sr-only">Previous</span>
+							</a>
+							<a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+								<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+								<span class="sr-only">Next</span>
+							</a>
+						</div>
+					</div>
+				</div> 
+				<br>
+				<hr align="center" width="75%"><br>
+
+				<!-- Reviews -->
+				<div class="row">
+					<div class="col-md-12">
+						<h4 id="room_show_title">Reviews <span id="average_rating"></span>(<%= @reviews.count %>)</h4>
+							<div>
+								<%= render 'reviews/form' if @booked && !@hasReview %>
+								<hr align="center" width="75%"><br>
+							</div>
+							<div>
+								<%= render 'reviews/list' %>
+							</div>
+				
+					</div>
+				</div>
+					
+				<!-- Google maps -->
+				<div class="row">
+					<div class="col-md-12">
+						<div id="map"></div>
+						<style>
+						#map {
+							width: 100%;
+							height: 400px;
+						} 
+						</style>
+					</div>
+				</div>
+				<br><hr align="center" width="75%"><br>
+
+				<!-- Close by Apartments -->
+				<%= render partial: "rooms/nearby_places", locals: { room: @room } %>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,31 @@
+
+		<div class="space-maker">
+			<div class="row">
+				<div class="col-md-4 col-md-offset-4">
+					<div class="panel panel-default">
+						<div class="panel-heading"><h4>Recover your password</div>
+						<div class="panel-body">
+						 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+						  <%= render 'shared/devisemes' %>
+
+						  <div class="form-group">
+						    <%= f.email_field :email, autofocus: true, :class => "form-control", :placeholder => "Email" %>
+						  </div>
+
+				
+
+						  <div class="actions">
+						    <%= f.submit "Send me instructions", :class => "btn btn-primary" %>
+						  </div>
+						<% end %>
+							
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
+
+

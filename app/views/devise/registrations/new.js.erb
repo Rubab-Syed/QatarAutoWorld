@@ -1,0 +1,32 @@
+<% if @user.present? %> 
+  $('#signup_details_modal_h').on('shown', function() {
+    $("body").addClass("modal-open");
+  })
+  if($('#signup_modal').is(':visible')){
+    $('#signup_modal').modal('toggle');
+  }
+  $('#detailed_signup_modal_holder').html("<%= j render(:partial => 'devise/registrations/signup_details_modal', :locals => { :resource => @user }) %>");
+  $('#signup_details_modal_h').modal({
+    backdrop: 'static',
+    keyboard: false
+  });
+  $('#signup_details_modal_h').modal('show');
+  $('.validate_form_signup_details').validationEngine();
+  if($('#signup_modal').is(':visible')){
+    $("body").addClass("modal-open");
+  } 
+  $('#detailed_signup_modal_holder').on('click', function(){
+    $('#signup_details_modal_h').hide();		 
+    $('body').removeClass('modal-open');
+    $('.modal-backdrop').remove();
+  });
+  $('#signup_modal_body').on('click', function(event) {
+    event.stopPropagation();
+  });
+<% else %>
+  $('#signup_modal').modal({
+    backdrop: 'static',
+    keyboard: false
+  });
+  $('#signup_modal').modal('show');
+<% end %>

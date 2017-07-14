@@ -1,0 +1,45 @@
+<script>
+  function initialize() {
+    var mapCanvas = document.getElementById('widget');
+    
+    var mapOptions = {
+    	<% if @arrRooms.length > 0 %>
+        center: new google.maps.LatLng(<%= @arrRooms[0].latitude %>, <%= @arrRooms[0].longitude %>),
+      <% else %>
+        center: new google.maps.LatLng(31.538700, 74.357094),
+      <% end %>
+      zoom: 10,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    }
+    var infowindow = new google.maps.InfoWindow({
+    });
+    var map = new google.maps.Map(mapCanvas, mapOptions);
+    // var map = new google.maps.Map(document.getElementById('widget'), {
+    //   zoom: 10,
+    //   center: new google.maps.LatLng(31.4749, 74.3734),
+    //   mapTypeId: google.maps.MapTypeId.ROADMAP
+    // });
+    markers = []
+    i = 0
+    <% @arrRooms.each do |room| %>
+        markers[i] = new google.maps.Marker({
+        	position: new google.maps.LatLng(<%= room.latitude %>, <%= room.longitude %>),
+          map: map,
+        	title: "<%= room.listing_name %>"
+        });
+        // markers[i].addListener('click', function() {
+        //   infowindow.open(map, this);
+        // });
+        // var infowindow = new google.maps.InfoWindow({
+        //   content: markers[i].title
+        // });
+        markers[i].setMap(map);
+        i = i + 1
+    <% end %>
+  }
+  $(document).ready(function(){
+  	google.maps.event.addDomListener(window, 'load', initialize);
+  })
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBpk8v_K0Scb10sblIgxphDNA8pjNSPLpk&v=3.exp&sensor=false&callback=initialize">
+</script>

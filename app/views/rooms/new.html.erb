@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="row text-center">
+    <p class="home_page_heading">
+      Qayaam Mezban
+      <br>
+      <%= image_tag('horizontal_line.png') %>
+    </p>
+  </div>
+  <div class="row col-sm-12 mb20">
+    <h2 class="sub_heading_add_room">Become a <span> Qayaam Mezbaan <span></h2>
+<p class="small_sub_heading">And earn with ease.</p>
+
+</div>
+<%= nested_form_for @room, url: rooms_path, :html => {:class => "room_form validate_form" } do |f| %>
+  <%= render partial: 'form', locals: { f: f } %>		
+  <div class="actions text-center mb20">
+    <%= f.submit "Create", class: "btn round_button_red nohover noactive", id: "btn-create-room" %>
+  </div>
+<% end %>
+</div>

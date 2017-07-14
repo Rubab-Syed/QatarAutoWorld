@@ -1,0 +1,49 @@
+<div class="container">
+	<div class="col-md-12 space-maker-hiw mb10">
+		<%= render partial: "pages/earning_range_selecter" %>
+	</div>
+	<div class="row">
+		<%= render partial: "pages/host_dashboard_sidebar" %>
+		<div class="col-md-9">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					Listings
+					<%= link_to new_room_path, class: "btn pull-right btn-add-listing" do %>
+						<i class="fa fa-plus"></i>
+						Add Listing
+					<% end %>
+				</div>
+				<div class="panel-body">
+					<% if @rooms.count == 0 %>
+						<p class="text-center">No Reservation to show</p>
+					<% end %>
+					<% @rooms.each do |room| %>
+						<div class="row">
+							<div class="col-md-2">
+							  <% if room.photos.present? %>
+							    <%= image_tag room.photos[0].image.url, :class => "pic-thumbnail" %> 
+							  <% else %>
+							    <%= image_tag "defaulthouse.jpg", :class => "pic-thumbnail" %> 
+							  <% end %>
+							</div>
+							<div class="col-md-4">
+								<h5><%= room.listing_name %></h5>
+							</div>
+							<div class="col-xs-4 col-md-2">
+								<%= link_to "Update", edit_room_path(room), class: "label label-primary" %>
+							</div>
+							<div class="col-xs-4 col-md-2">
+								<%= link_to "View My Listing", room_path(room), class: "label label-success" %>
+							</div>
+							<div class="col-xs-4 col-md-2">
+								<%= link_to "Delete", room_path(room), method: :delete, data: {confirm: "Are you sure you want to delete this listing you can't undo this action?"}, class: "label label-danger" %>
+							</div>
+
+						</div>
+						<hr>
+					<% end %>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,14 @@
+
+<div id="update-phone-number-holder"> 
+</div>
+
+<%= javascript_tag do %>
+	$(document).ready(function(){
+		$('#update-phone-number-holder').html("<%= j render(:partial => 'users/phone_number_update_form', :locals => { :user => @user }) %>");
+		$('#update_phone_number_modal').modal({
+	    	backdrop: 'static',
+	    	keyboard: false
+		});
+		$('#update_phone_number_modal').modal('show');
+	})
+<% end %>

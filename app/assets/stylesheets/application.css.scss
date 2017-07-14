@@ -1,0 +1,43 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "daterangepicker-bs3";
+@import "font-awesome-sprockets";
+@import "font-awesome";
+@import "toastr";
+@import 'custom/buttons';
+@import 'custom/navbar';
+@import 'custom/forms';
+@import 'custom/bodymain';
+@import 'custom/typography';
+@import 'custom/content';
+@import 'custom/room_show';
+@import 'custom/reservation';
+@import 'jquery.ui.all';
+@import 'custom/homepage';
+@import 'theme';
+@import 'select2-bootstrap';
+@import 'select2';
+@import 'custom/slick';
+@import 'custom/slick-icon';
+@import 'custom/slick-theme';
+@import 'custom/rooms';
+@import 'custom/pages';
+@import 'jquery.switchbutton';
+@import 'animation';
+@import 'search';
+@import 'footer';
+@import 'validationEngine.jquery.css';
+@import url('//fonts.googleapis.com/css?family=Lato');
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
+@import url(https://fonts.googleapis.com/css?family=Varela+Round);
+@import url(https://fonts.googleapis.com/css?family=Architects+Daughter);
+@import 'lato-webfont';
+
+body.modal-open {
+  overflow: hidden;
+}
+
+html {
+  max-width: 100%;
+  overflow-x: hidden;
+}

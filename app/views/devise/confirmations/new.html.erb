@@ -1,0 +1,28 @@
+
+<% provide(:title, 'Vacation Rentals') %>
+  <div class="space-maker">
+	<div class="row">
+	  <div class="col-md-4 col-md-offset-4 center">
+		<div class="panel panel-default">
+		  <div class="panel-heading">
+			<h4>Resend confirmation instructions</h4></div>
+			  <div class="panel-body">
+				<%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
+				  <%= render 'shared/devisemes' %>
+
+				  <div class="form-group">
+				    <%= f.email_field :email, autofocus: true, :class => "form-control", :placeholder => "Email" %>
+				  </div>
+				  
+
+				  <div class="actions">
+				    <%= f.submit "Resend confirmation instructions", :class => "btn btn-primary" %>
+				  </div>
+				<% end %>
+			  </div>
+			</div>
+		  </div>
+	    </div>			
+	  </div>
+
+

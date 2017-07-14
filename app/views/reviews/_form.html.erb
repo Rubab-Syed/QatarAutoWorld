@@ -1,0 +1,28 @@
+<div class="col-md-6 review_create">
+
+<%= form_for([@room, @room.reviews.new]) do |f| %>
+
+	<div id="user_stars"></div>
+
+	<div class="form-group">
+		<%= f.text_area :comment, rows: 3, class: "form-control", placeholder: "Share your thoughts/experiences about this room" %>
+	</div>
+	
+
+	<%= f.hidden_field :room_id, value: @room.id %>
+
+	<div class="actions">
+		<%= f.submit "Review it",id: "btn_review_create", class: "btn btn-primary " %>
+	</div>
+
+<% end %>
+</div>
+
+<script>
+	
+	$('#user_stars').raty({
+		path: '/assets',
+		scoreName: 'review[star]',
+		score: 1
+	});
+</script>

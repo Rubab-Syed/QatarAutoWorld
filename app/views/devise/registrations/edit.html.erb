@@ -1,0 +1,70 @@
+
+<div class="panel-body space-maker">
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <div class="panel panel-default">
+      <div class="panel-heading updater-heading">Profile Updater</div>
+      <div class="panel-body">
+        
+          <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { multipart: true }) do |f| %>
+            <%= render 'shared/devisemes' %>
+
+            <div class="form-group">
+              <%= f.text_field :fullname, autofocus: true, :placeholder => "Full Name", :class => 'form-control' %>
+            </div>
+
+
+            <!-- Space for birthday -->
+
+            <div class="form-group">
+              <%= f.email_field :email, :placeholder => "Email", :class => 'form-control' %>
+            </div>
+
+            <div class="form-group">
+              <%= f.text_field :cnic, :placeholder => "Enter Your CNIC (XXXXX-XXXXXXX-X)", :class => 'form-control cnic_field' %>
+            </div>
+
+            <div class="form-group">
+              <%= f.text_field :phone_number, :placeholder => "Phone Number (03XX-XXXXXXX)", :class => 'form-control phone_number_field' %>
+            </div>
+
+            <div class="form-group">
+              <%= f.text_area :description, rows: 5, cols: 25,  :placeholder => "Description", :class => 'form-control' %>
+            </div>
+
+            <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+              <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+            <% end %>
+
+            <% unless f.object.provider.present? %>
+              <div class="form-group">
+                <%= f.password_field :password, autocomplete: "off", :placeholder => "New Password (leave blank if you don't want to change it)", :class => 'form-control' %>
+              </div>
+
+              <div class="form-group">
+                <%= f.password_field :password_confirmation, autocomplete: "off", :placeholder => "Confirm Password", :class => 'form-control' %>
+              </div>
+
+              <div class="form-group">
+                <%= f.password_field :current_password, autocomplete: "off", :placeholder => "Current Password (To save your updates, we need your current password)", :class => 'form-control' %>
+              </div>
+            <% end %>
+
+            <div class="form-group">
+              <%= f.label :avatar %>
+              <%= f.file_field :avatar, class: "form-control", autofocus: true %>
+            </div>
+
+            <div class="actions text-center">
+              <%= f.submit "Save", :class => "btn btn-primary", id: "btn-update-profile" %>
+            </div>
+          <% end %>
+        </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+

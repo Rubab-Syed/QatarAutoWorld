@@ -1,0 +1,15 @@
+<div class="container">
+	<div class="row text-center">
+		<p class="home_page_heading">
+	    <%= @room.listing_name %>
+	    <br>
+	    <%= image_tag('horizontal_line.png') %>
+	  </p>
+	</div>
+	<%= nested_form_for @room, url: room_path, method: "put", :html => {:class => "room_form validate_form"} do |f| %>
+		<%= render partial: 'form', locals: { f: f } %>
+		<div class="actions text-center mb20">
+			<%= f.submit "Update", class: "btn btn-primary", id: "btn-create-room" %>
+		</div>
+	<% end %>
+</div>

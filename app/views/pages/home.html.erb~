@@ -1,0 +1,71 @@
+<div class="container">
+  <div class="wrapper">
+    <div class="row">
+      <div class="col-md-4">
+	<%= image_tag 'logo.jpg', style:"width:100px;height:100px" %>
+      </div>
+      <div class="col-md-8 slogan text-center">
+	<p class="text-center">Buy Spare Parts for Every Vehicle <span style="color:red">or</span>,</br><span class="second-line"> Book a Car Breakdown Service with Ease</span><p>
+      </div>	
+    </div>
+  </div>   
+
+<section class="sections lightbg footer-section">
+  <div class="container text-center">
+    <div class="heading-content">
+      <p class="home_page_heading">
+        Get In Touch With Us
+        <br>
+        <%= image_tag('horizontal_line.png') %>
+      </p>
+    </div>
+    
+    <!-- Example row of columns -->
+    <div class="row">
+      <div class="col-md-4 col-sm-12 col-xs-12">
+        <center>
+	  <table>
+            <tr>
+              <td><i class="fa fa-mobile fa-3x generic-blue-clor"></i></td>
+              <td><h4>&nbsp;Call US</h4></td>
+            </tr>
+            <tr>
+	      <td colspan="3"><p class="text-left medium-font">0345-6890083</p></td>
+	    </tr>
+	  </table>
+	</center>
+      </div>
+      <div class="col-md-4 col-sm-12 col-xs-12">
+        <div class="features-content">
+          <p class="medium-font">Do you have any query? Click the button below!</p>
+          <br>
+          <div class="form-group">
+            <button class="btn btn-lg footer-contact-button generic-red-button signup-button" data-toggle="modal" data-target="#send_email_modal">Contact</button>
+          </div>                            
+        </div>
+      </div>
+      
+      <div class="col-md-4 col-sm-12 col-xs-12">
+        <center>
+          <table>
+            <tr>
+              <td><i class="fa fa-envelope-o fa-2x generic-blue-clor"></i></td>
+              <td><h4>&nbsp;Email US</h4></td>
+            </tr>
+            <tr>
+              <td colspan="2"><p class="text-left medium-font">info@qayaam.com</p></td></tr>
+          </table>
+        </center>
+      </div>   
+    </div> 
+    <div class="row">
+      <div class="col-lg-12 text-center">
+        <ul class="list-inline social-icon">
+          <li><%= link_to image_tag("twittericon.png"), "https://twitter.com/Qayaamdotcom", target: "_blank" %></li>
+          <li><%= link_to image_tag("fbicon.png"), "https://web.facebook.com/Qayaamdotcom", target: "_blank" %></li>
+        </ul>
+      </div>
+    </div>
+       
+  </div>
+</div> <!-- /container -->

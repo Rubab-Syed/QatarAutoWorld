@@ -1,0 +1,345 @@
+<div class="container">
+  <div class="row">
+    <div class="row text-center">
+      <p class="home_page_heading">
+	<%= @room.listing_name.present? ? @room.listing_name : @room.home_type %>
+	<br>
+	<%= image_tag('horizontal_line.png') %>
+      </p>
+    </div>
+    <div class="col-md-12">
+      <!-- Host contact and booking -->
+      <div class="col-md-4">
+	<div class="panel booking-panel">
+	  <div class="row-space-2">
+	    <div class="row">
+	      <div class="col-md-2 col-xs-2 col-xs-offset-2 col-md-offset-1">
+		<% if @room.user.avatar.present? %>
+		  <%= link_to user_path(@room.user) do %>
+		    <%= image_tag @room.user.avatar.url, class: "host-avatar img-circle" %>
+		  <% end %>
+		<% else %>
+		  <%= image_tag "default-user-image.png", class: "host-avatar img-circle" %> 
+		<% end %>
+	      </div>
+	      
+	      <div class="col-md-8 col-xs-8" style="padding-left:110px;padding-top:30px">
+		<b class="medium-font"><%= @room.user.fullname %></b>
+		<% if current_user.present? %>
+		  <div>
+		    <%= link_to "Contact", conversations_path(sender_id: current_user.id, recipient_id: @room.user.id), method: 'post', class: "btn btn-primary contact-host-btn medium-font" %>
+		  </div>
+		<% else %>
+		  <div>
+		    <%= link_to "Contact", new_user_session_path, class: "btn btn-primary contact-host-btn medium-font" %>
+		  </div>
+		<% end %>
+	      </div>
+	    </div>
+	  </div>
+	  
+	  <div>
+	    <%= render 'reservations/form' %>
+	  </div>
+	  
+	</div>
+      </div>
+      
+
+      <!-- Slider for listing's images -->
+      <% if @photos.blank? %>
+        <%= image_tag "defaulthouse.jpg", class: "img-responsive listing-img" %>
+      <% else %>	
+        <div class="col-md-8 room-slider listing-div">
+	  <% @photos.each do |photo| %> 
+	    <%= image_tag photo.image.url, class: "img-responsive listing-img" %>
+	  <% end %>
+	</div>
+     <% end %>
+    </div>
+  </div>
+  <br>
+  
+  <!-- Main Info -->
+  <div class="row specs">
+    <div class="row panel panel-default">
+      <div class="col-md-9 col-space-1">
+	<div class="row row-space-3">
+	  <div class="col-sm-3">
+	    <%= image_tag "hometype.png", class: "img-responsive room-icons" %>
+	    <!--<i class="fa fa-home fa-2x room-icons"></i>--><br>
+	    <p class="medium-font"><%= @room.home_type %></p>
+	  </div>
+	  <% if @room.accommodate.present? %>
+	  <div class="col-sm-3">
+	    <%= image_tag "guests.png", class: "img-responsive room-icons" %>
+	    <!--<i class="fa fa-users fa-2x room-icons"></i>--><br>
+	    <p class="medium-font"><%= @room.accommodate %> <%= @room.accommodate > 1? "Guests" : "Guest" %></p>
+	  </div>
+	  <% end %>
+	  <div class="col-sm-3">
+	    <%= image_tag "beds.png", class: "img-responsive room-icons" %>
+	    <!--<i class="fa fa-bed fa-2x room-icons"></i>--><br>
+	    <p class="medium-font"><%= @room.bed_room %> <%= @room.bed_room > 1? "Bedrooms" : "Bedroom" %></p>
+	  </div>
+	  <div class="col-sm-3">
+	    <%= image_tag "bathrooms.png", class: "img-responsive room-icons" %>
+	    <!--<i class="fa fa-ship fa-2x room-icons"></i>--><br>
+	    <p class="medium-font"><%= @room.bath_room %> <%= @room.bath_room > 1? "Bathrooms" : "Bathroom" %></p>
+	  </div>
+	</div>
+      </div>
+    </div>
+  </div>
+  
+   <!-- Amenities -->
+ <!-- <h4 id="room_show_title"> Amenities </h4>-->
+ <div class="row amenities">
+   <div class="panel panel-default">
+     <div class="row row-space-3 text-center">
+       <div class="col-sm-1 col-xs-4">
+	 <%= image_tag "AC.png", class: "img-responsive room-icons" %><br>
+	 <p class="<%= 'text-line-through' if !@room.is_air %> medium-font">AC</p>
+       </div>
+       <div class="col-sm-1 col-xs-4">
+	 <%= image_tag "Internet.png", class: "img-responsive room-icons" %><br>
+	 <p class="<%= 'text-line-through' if !@room.is_internet %> medium-font">Internet</p>
+       </div>
+       <div class="col-sm-1 col-xs-4">
+	 <%= image_tag "Generator.png", class: "img-responsive room-icons" %><br>
+	 <p class="<%= 'text-line-through' if !@room.is_generator %> medium-font">Generator</p>
+       </div>
+       <div class="col-sm-1 col-xs-4">
+	 <%= image_tag "UPS.png", class: "img-responsive room-icons" %><br>
+	 <p class="<%= 'text-line-through' if !@room.is_ups %> medium-font">UPS</p>
+       </div>
+       <div class="col-sm-1 col-xs-4">
+	 <%= image_tag "Fridge.png", class: "img-responsive room-icons" %><br>
+	 <p class="<%= 'text-line-through' if !@room.is_fridge %> medium-font">Fridge</p>
+       </div>
+       <div class="col-sm-1 col-xs-4">
+	 <%= image_tag "Heating.png", class: "img-responsive room-icons" %><br>
+	 <p class="<%= 'text-line-through' if !@room.is_heating %> medium-font">Heating</p>
+       </div>
+       <div class="col-sm-1 col-xs-4">
+	 <%= image_tag "TV.png", class: "img-responsive room-icons" %><br>
+	 <p class="<%= 'text-line-through' if !@room.is_tv %> medium-font">TV</p>
+       </div>
+       <div class="col-sm-1 col-xs-4">
+	 <%= image_tag "Entrance.png", class: "img-responsive room-icons" %><br>
+	 <p class="<%= 'text-line-through' if !@room.is_sepentrance %> medium-font">Separate Entrance</p>
+       </div>
+       <div class="col-sm-1 col-xs-4">
+	 <%= image_tag "Food.png", class: "img-responsive room-icons" %><br>
+	 <p class="<%= 'text-line-through' if !@room.is_food %> medium-font">Food</p>
+       </div>
+       <div class="col-sm-1 col-xs-6">
+	 <%= image_tag "Parking.png", class: "img-responsive room-icons" %><br>
+	 <p class="<%= 'text-line-through' if !@room.is_parking %> res-text medium-font">Parking</p>
+       </div>
+       <div class="col-sm-1 col-xs-6">
+	 <%= image_tag "Microwave.png", class: "img-responsive room-icons" %><br>
+	 <p class="<%= 'text-line-through' if !@room.is_microwave %> res-text medium-font">Microwave</p>
+       </div>
+     </div>  
+     
+     <div class="row second-row-padding text-center">
+       <div class="col-sm-4 col-xs-4 second-row-col">
+	 <%= image_tag "Kitchen.png", class: "img-responsive room-icons" %><br>
+	 <p class="<%= 'text-line-through' if !@room.is_kitchen %> medium-font">Kitchen</p>
+       </div>
+       <div class="col-sm-4 col-xs-4 second-row-col">
+	 <%= image_tag "StudyTable.png", class: "img-responsive room-icons" %><br>
+	 <p class="<%= 'text-line-through' if !@room.is_studytable %> medium-font">Study Table</p>
+       </div>
+       <div class="col-sm-4 col-xs-4 second-row-col">
+	 <%= image_tag "Iron.png", class: "img-responsive room-icons" %><br>
+	 <p class="<%= 'text-line-through' if !@room.is_iron %> medium-font">Iron</p>
+       </div>
+     </div>
+   </div>
+ </div>
+
+ <!-- About -->
+ <% if @room.summary.present? %>
+   <h4 id="room_show_title">Details about the place </h4>
+   <div class="row about-place">
+     <div class="panel panel-default">
+       <p class="medium-font"><%= @room.summary %></p>
+     </div>
+   </div>
+ <% end %>
+
+<!-- House Rules -->
+<div class="row house-rules">
+  <div class="col-md-4">
+    <h4 id="room_show_title">House Rules </h4>
+    <div class="row">
+      <ul>
+	<% @room.default_rules.each do |rule| %>
+	  <div class="row">
+	    <div class="col-md-8">
+              <li><p class="medium-font"><%= rule.title %><p></li>
+	    </div>
+	    <div class="col-md-4">
+	      <b><%= @defaultruleroom.find_by(default_rule: rule).answer ? "Yes" : "No" %></b><br>
+	    </div>
+	  </div>
+	<% end %>
+	<% @room.house_rules.each do |rule| %>
+	  <div class="row">
+	    <div class="col-md-8">
+	      <li><p class="medium-font"><%= rule.title %><p></li>
+	    </div>
+	  </div>
+	<% end %>
+      </ul>
+    </div>
+  </div>
+<!-- Pricing and Refund Policy -->
+  <div class="col-md-8 pricing">
+    <h4 id="room_show_title">Pricing</h4>
+    <div class="panel panel-default">
+      <div class="panel-body">
+	<div class="row col-md-offset-1">
+	  <div class="col-md-4">
+	    <h4><b>Daily</b></h4>
+	    <p class="large-font"><%= @room.nightly_enabled ? @room.price : "X" %></p>
+	  </div>
+	  <div class="col-md-4">
+	    <h4><b>Weekly</b></h4>
+	    <p class="large-font"><%= @room.weekly_enabled ? @room.weekly_price : "X" %></p>
+	  </div>
+	  <div class="col-md-4">
+	    <h4><b>Monthly</b></h4>
+	    <p class="large-font"><%= @room.monthly_enabled ? @room.monthly_price : "X" %></p>
+	  </div>
+	</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Near to -->
+<h4 id="room_show_title">Near To</h4>
+<div class="row near-to text-center">
+  <div class="col-md-12">
+    <div class="col-md-2 large-font" id="p1">
+    </div>
+    <div class="col-md-2 large-font" id="p2">
+    </div>
+    <div class="col-md-2 large-font" id="p3">
+    </div>
+    <div class="col-md-2 large-font" id="p4">
+    </div>
+    <div class="col-md-2 large-font" id="p5">
+    </div>
+  </div>
+</div>
+
+<!-- Reviews -->
+<% if @reviews.count > 0 %>
+  <div class="row" style="margin-top:10px">
+    <div class="col-md-12">
+      <h4 id="room_show_title">Reviews (<%= @reviews.count %>)</h4>
+      <div>
+	<%= render 'reviews/form' if @booked && !@hasReview %>
+	<hr align="center" width="75%"><br>
+      </div>
+      <div>
+	<%= render 'reviews/list' %>
+      </div>
+    </div>
+  </div>
+<% end %>
+      
+      <!-- Google maps -->
+<div class="row address-map">
+  <div class="col-md-12">
+    <div id="map"></div>
+    <style>
+      #map {
+      width: 100%;
+      height: 400px;
+      } 
+    </style>
+  </div>
+</div>
+
+<!-- Nearby Locations -->
+<%= render partial: "rooms/nearby_places", locals: { room: @room } %>
+
+
+<div class="modal fade" id="booking_confirmation_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title text-center" id="myModalLabel">Message Sending Confirmation</h4>
+      </div>
+      <div class="modal-body">
+        <p class="text-center">Your booking is done. Team Qayaam will contact you soon through your phone number.</p>
+        <a href="/" class="btn btn-primary">Go Back to Home</a>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="spinner" id="reservation_spinner"></div>
+<script>
+var latf = <%= @room.latitude %> 
+var longf = <%= @room.longitude %>
+  function initialize() {
+    var mapCanvas = document.getElementById('map');
+    var mapOptions = {
+      center: new google.maps.LatLng(latf, longf),
+      zoom: 13,
+      mapTypeId: google.maps.MapTypeId.ROADMAP,
+      scrollwheel:  false,
+      maxZoom: 16
+    }
+    var map = new google.maps.Map(mapCanvas, mapOptions);
+    var marker = new google.maps.Marker({
+      position: new google.maps.LatLng(latf, longf),
+      title: "qayaam"
+    });
+    var circle = new google.maps.Circle({
+      map: map,
+      radius: 700,   // meters
+      strokeColor: '#0068a9',
+      strokeWidth: 20,
+      fillColor: '#0068a9'
+    }); 
+    circle.bindTo('center', marker, 'position');
+    var request = {
+      location: new google.maps.LatLng(<%= @room.latitude %>, <%= @room.longitude %>),
+      radius: '1000',
+      types: ['restaurant', 'hospital', 'store']
+    };
+
+    service = new google.maps.places.PlacesService(map);
+    service.nearbySearch(request, callback);
+  }
+
+  function callback(results, status) {
+    if (status == google.maps.places.PlacesServiceStatus.OK) {
+      for (var i = 0; i < results.length; i++) {
+        var place = results[i];
+      }
+    }
+
+    for(i=1;i<=5;i++) {
+      document.getElementById('p'+i).innerHTML = results[i].name;
+    }
+  }
+
+  $('#average_rating').raty({
+    path: '/assets',
+    readOnly: true,
+    score: <%= @room.average_rating %>
+  });
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBpk8v_K0Scb10sblIgxphDNA8pjNSPLpk&libraries=places&v=3.exp&sensor=false&callback=initialize"></script>
+
