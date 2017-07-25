@@ -13,7 +13,8 @@ Rails.application.routes.draw do
   resources :users, only: [:show]
   resources :rooms
   resources :photos
-
+  resources :breakdowns
+  
   resources :rooms do
     resources :reservations, only: [:create] do
       member do

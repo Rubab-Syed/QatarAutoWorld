@@ -1,0 +1,41 @@
+<script>
+  $(function(){
+    $( "#datepicker" ).datepicker();
+  });
+</script>
+
+<div> 
+  <div class="panel-body">
+    <%= form_for(@breakdown, class: "validate_form") do |f| %>
+
+      <div class="col-md-12 space-1 form-group">
+        <label class="large-font">
+	  Name
+	</label>
+	<%= f.text_field :name, { class: "form-control validate[required]" } %>
+      </div>
+
+      <div class="col-md-12 space-1 form-group">
+	<label class="large-font">
+	  Check in
+	  <a title='These check-in and check-out dates do not take part in the calculation, rent calculation is based on the days, weeks or month you enter and it can be changed in future as well on the census of both parties', 'data-toggle'='tooltip', 'data-placement'='top'><i class="fa fa-question-circle" aria-hidden="true"></i></a>
+	</label>
+	<%= f.text_field :date, readonly: true, placeholder: "dd-mm-yy", id: "datepicker", class: "form-control" %>
+      </div>
+
+      <div class="col-md-12 form-group"> 
+	<label class="large-font">Time</label>
+	<div class="col-md-8">
+	  <%= f.text_field :time, placeholder: "10", class: "form-control col-md-2" %>
+	</div>
+	<select class="col-md-2">
+	  <option value="am">AM</option>
+	  <option value="pm">PM</option>
+	</select>
+      </div>
+      
+      <%= f.submit "BOOK", class: "btn btn-primary round_button_red nohover noactive large-font" %>
+    <% end %>
+  </div>
+</div>
+
