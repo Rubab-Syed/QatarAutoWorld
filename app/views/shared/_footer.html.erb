@@ -1,8 +1,8 @@
-<div class="footer">
+<div class="footer" style="margin-top:720px">
   <div class="row">
     <div class="col-md-4 col-xs-6">
-      <p class="footer-brand">Qayaam (Pvt) Ltd.</p>
-      <p>With Qayaam - Rent out</br>your free space or move in with great</br>people with ease
+      <p class="footer-brand">Qatar Auto World</p>
+      <p>With Qatar Auto World - Buy spare parts for your vehicle</br>or car breakdown service with ease
     </div>
     <div class="col-md-4 col-xs-6">
       <p>Terms of agreement</p>
@@ -12,132 +12,5 @@
   </div>
 </div>
 <div class="copyright_para text-center">
-  <p>Copyright © 2017 - Qayaam <span class="generic-blue-clor">Privacy Policy</span></p>
+  <p>Copyright © 2017 - QatarAutoWorld </p>
 </div>
-
-
-<div class="word_map hidden">
-    <div class="row">
-      <div class="col-lg-12 text-center">
-        <div class="navy-line"></div>
-        <h1>Contact Us</h1>
-        <p>If you have any queries, click on the contact button below</p>
-      </div>
-    </div>
-    <div class="row">
-        <div class="col-lg-12 text-center">
-          <a href="#" class="btn btn-primary mt50" data-toggle="modal" data-target="#send_email_modal">Contact</a>
-          <p class="mt10"> or follow us on social media</p>
-          <ul class="list-inline social-icon">
-            <li><a href="https://twitter.com/Qayaamdotcom" target="_blank"><i class="fa fa-twitter"></i></a></li>
-            <li><a href="https://web.facebook.com/Qayaamdotcom" target="_blank"><i class="fa fa-facebook"></i></a></li>
-            <li><a><i class="fa fa-linkedin"></i></a></li>
-          </ul>
-        </div>
-    </div>
-</div>
-
-<div class="footer hidden">
-    <div class="row">
-      <div class="col-md-2 col-sm-4 widget">
-        <p class="small-font mb0">Contact Us</p>
-        <article class="widget_content">
-          <p class="small-font">
-            <a href="mailto:teamqayaam@gmail.com">teamqayaam@gmail.com</a>
-            <br />
-            Phone: +92 320 0514147
-          </p>
-        </article>
-      </div>
-      <div class="col-md-5 col-sm-4 col-md-offset-1">
-        <p class="small-font">Copyrights reserved @ Qayaam.com</p>
-      </div>
-      <div class="col-md-4 col-sm-4 pull-right">
-        <p class="small-font">
-          <a class="colorless-link" href="#">Terms and Services</a>
-          <br />
-          Social Media Link:
-          <a class="colorless-link ml10 mr10" href="https://web.facebook.com/Qayaamdotcom/"><i class="fa fa-facebook fa-2x"></i></a>
-          <a class="colorless-link mr10" href="#"><i class="fa fa-twitter fa-2x"></i></a>
-        </p>
-      </div>
-    </div>
-
-</div>
-
-
-<!-- Modal -->
-<div class="modal fade" id="send_email_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <%= form_tag(send_us_email_path, remote: true) do %>
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title text-center" id="myModalLabel">Send Us Mail</h4>
-        </div>
-        <div class="modal-body">
-          <div class="col-md-12">
-            <div class="form-group">
-              <label>Full Name</label>
-              <%= text_field_tag :full_name, nil, :class => "form-control" %>
-            </div>
-          </div>
-
-          <div class="col-md-12">
-            <div class="form-group">
-              <label>Contact Number</label>
-              <%= text_field_tag :contact_number, nil, :class => "form-control" %>
-            </div>
-          </div>
-
-          <div class="col-md-12">
-            <div class="form-group">
-              <label>Email Address</label>
-              <%= text_field_tag :email_address, nil, :class => "form-control" %>
-            </div>
-          </div>
-
-          <div class="col-md-12">
-            <div class="form-group">
-              <label>Message</label>
-              <%= text_area_tag :message, nil, :class => "form-control", rows: "7" %>
-            </div>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <%= submit_tag 'Send', :class => "btn btn-danger" %>
-        </div>
-      </div>
-    <% end %>
-  </div>
-</div>
-
-<!-- Modal -->
-<div class="modal fade" id="contact_confirmation_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title text-center" id="myModalLabel">Message Sending Confirmation</h4>
-      </div>
-      <div class="modal-body">
-        <p class="text-center">Your message is sent to our team, we will get back to you soon</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!--
-<div class="footer-bottom">
-  <div class="container">
-    <div class="row">
-    </div>
-      <div class="col-md-12 widget">© 2014 | Created with Boostrap <span class="pull-right">Minimize your browser »</span>
-    </div>
-  </div>
-</div>
--->

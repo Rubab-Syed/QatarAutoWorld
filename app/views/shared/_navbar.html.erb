@@ -16,13 +16,13 @@
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	<ul class="nav navbar-nav navbar-right">
 	  <!--<li><%= link_to "How It Works", how_it_works_url, :class => "hidden" %></li>-->
-	  <li><%= link_to "Spare Parts", partners_path %></li>
-	  <li><%= link_to "Car Breakdown", partners_path %></li>
+	  <li><%= link_to "Spare Parts", new_breakdown_path %></li>
+	  <li><%= link_to "Car Breakdown", new_breakdown_path %></li>
 	  	  
 	  <% if(!user_signed_in?) %>
-	    <li><%= link_to "Spare Parts", partners_path, class: "hidden" %></li>
-	    <li><%= link_to "Car Breakdown", partners_path, class: "hidden" %></li>
-	    <li><%= link_to "Sign Up", new_user_registration_path, :remote => true, :class => "" %></li>
+	    <li><%= link_to "Spare Parts", new_breakdown_path, class: "hidden" %></li>
+	    <li><%= link_to "Car Breakdown", new_breakdown_path, class: "hidden" %></li>
+	    <!--<li><%= link_to "Sign Up", new_user_registration_path, :remote => true, :class => "" %></li>
 	    <li><%= link_to "Log In", new_user_session_path %></li>
 	    <!--<li><%= link_to "How to Use", "#" %></li>-->
 	<% else %>

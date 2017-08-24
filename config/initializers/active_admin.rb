@@ -4,7 +4,7 @@ ActiveAdmin.setup do |config|
   # Set the title that is displayed on the main layout
   # for each of the active admin pages.
   #
-  config.site_title = "Qayaam"
+  config.site_title = "QatarAutoWorld"
 
   # Set the link url for the title. For example, to take
   # users to your main site. Defaults to no link.
@@ -178,6 +178,13 @@ ActiveAdmin.setup do |config|
   # resources or you can disable them globally from here.
   #
   # config.breadcrumb = false
+
+  # == Create Another Checkbox
+  #
+  # Create another checkbox is disabled by default. You can customize it for individual
+  # resources or you can enable them globally from here.
+  #
+  # config.create_another = true
 
   # == Register Stylesheets & Javascripts
   #

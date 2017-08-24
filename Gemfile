@@ -12,6 +12,9 @@ gem 'bootstrap-sass', '~> 3.3.5'
 gem 'sass-rails', '~> 5.0'
 gem 'font-awesome-sass'
 gem 'paperclip', '~> 5.0'
+gem 'bootstrap-timepicker-rails'
+gem 'sweet-alert', :git => "https://github.com/frank184/sweet-alert-rails.git"
+gem 'activeadmin', github: 'activeadmin'
 
 # For sns service
 gem 'aws-sdk', '~> 2'

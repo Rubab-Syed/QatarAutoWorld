@@ -17,6 +17,7 @@
 //= require daterangepicker
 //= require bootstrap-sprockets
 //= require toastr
+//= require sweet-alert
 //= require private_pub
 //= require jquery_nested_form
 //= require data-confirm-modal
@@ -25,6 +26,7 @@
 //= require cable
 //= require jquery.validationEngine-en
 //= require jquery.validationEngine
+//= require bootstrap-timepicker
 //= require jquery.mask
 //= require_tree .
 
