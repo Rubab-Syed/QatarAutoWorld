@@ -16,14 +16,12 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: qayaam_test
+  database: qatar_test
 
 production:
   <<: *default
-  adapter: postgresql
-  username: root
-  password: Lceplan9kz
-  database: qayaam_live
-  host: db-qayaam.crawyhpalzvd.us-west-2.rds.amazonaws.com
-  port: 5432
-
+  username: qatar
+  password: 3819292qatar
+  database: qatar
+  host: qatardbinstance.c43zcdrgwnuz.us-west-2.rds.amazonaws.com
+  port: 3306
