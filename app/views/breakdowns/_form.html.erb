@@ -6,6 +6,23 @@ body {
   -o-background-size: cover;
   background-size: cover;
 }
+
+.breakdown-form {
+  width: 500px;
+  margin-top:50px;
+  border-radius:10px;
+  margin-left:300px;
+  background:rgba(16, 32, 90, 0.98);
+}
+
+@media only screen and (max-width: 990px) {
+  .breakdown-form {
+    margin-left:0px;
+    margin-bottom:100px;
+    width:100%;
+  }
+}
+
 </style>
 
 <script>
@@ -14,8 +31,8 @@ body {
   });
 </script>
 
-<div> 
-  <div class="panel-body col-md-offset-4" style="width:500px;margin-top:50px;border-radius:10px;background:rgba(16, 32, 90, 0.98);margin-bottom:-600px">
+<div class="container" style="padding-bottom:-200px"> 
+  <div class="panel-body col-md-offset-3 breakdown-form">
     <%= form_for(@breakdown, class: "validate_form") do |f| %>
 
       <div class="col-xs-6 space-1 form-group">

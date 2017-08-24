@@ -59,7 +59,7 @@
   padding-left: 70px;
   padding-top: 30px;
   width: 100%;
-  margin: 0;
+  margin-top: 720px;
   height: 200px;
   background-color: #242424;
 }
@@ -68,4 +68,10 @@
   .footer p {
     font-size: 12px;
   }
+}
+
+@media only screen and (max-width: 990px) {
+  .footer {
+    margin-top:0px;
+  }  
 }
